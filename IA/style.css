@@ -32,6 +32,7 @@ h1, h2, h3, p {
     font-family: 'Archivo Black', sans-serif;
 }
 
+
 img{
     width: 100%;
     border-radius: 15%;
@@ -271,7 +272,7 @@ input[type="radio"] {
 }
 
 .side-navbar ul li a{   
-  display: flex;
+  display: block;
   width: 100%;
   display: flex;
   color: var(--bars-text);
@@ -280,7 +281,7 @@ input[type="radio"] {
 .side-navbar ul li a .icon{
   min-width: 60px;
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 60px;
   height: 60px0;
   text-align: center;

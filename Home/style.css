@@ -2,6 +2,12 @@
  font-family: "Fonte";
  src: url('Inversionz.ttf')
 }
+
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url('/IA/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+
 .LensGeld{
     font-family: "Fonte";
     font-size: 70px;
@@ -19,6 +25,10 @@
  list-style: none;
  font-family: "Poppins", sans-serif;
 } 
+
+h1, h2, h3, p {
+    font-family: 'Archivo Black', sans-serif;
+}
 
 /* side navbar*/
  .main{
@@ -49,7 +59,7 @@
     width: 100%;
 }
 .side-navbar ul li:hover{
-    background: var(--color-background);
+    background: #6b8ea7;
 }
 .side-navbar ul li:first-child{
   margin-bottom: 1rem;
@@ -600,7 +610,7 @@ main .recent-expenses a{
 }
 
 .faq-header {
-    background-color: #007BFF;
+    background-color: #1c283e;
     color: white;
     padding: 15px;
     border-radius: 10px 10px 0 0;
@@ -631,7 +641,7 @@ main .recent-expenses a{
 }
 
 .faq-question {
-    background-color: #007BFF;
+    background-color: #1c283e;
     color: white;
     border: none;
     width: 100%;
@@ -644,7 +654,7 @@ main .recent-expenses a{
 }
 
 .faq-question:hover {
-    background-color: #0056b3;
+    background-color: #6b8ea7;
 }
 
 .faq-answer {
