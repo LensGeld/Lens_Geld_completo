@@ -21,7 +21,9 @@
     text-decoration: none;
     list-style: none;
 }
-
+.menu.show {
+    display: block;
+}
 
 div {
     display: block;
@@ -241,6 +243,13 @@ input[type="radio"] {
 }
 
 /* ----------SIDEBAR----------- */
+.main{
+    width: 100%;
+    background-color: #ececec;
+ }
+ html{
+    font-size: 14px;
+ }
 .side-navbar{
     width: 250px;
     height: 100vh;
@@ -463,12 +472,14 @@ input[type="radio"] {
 #menu-icon {
     font-size: 34px; /* Tamanho do ícone de menu */
     cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    color: var(--bars-text);
 }
 
 .content.active{
     width: calc(100% - 60px);
     left: 60px;
 }
+
 
 /* Cores Root*/
 

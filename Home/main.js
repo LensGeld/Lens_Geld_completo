@@ -2,6 +2,12 @@ const messageIcon = document.getElementById('open-message-box');
 const messageBox = document.getElementById('message-box');
 const closeMessageBox = document.getElementById('close-message-box');
 
+// Dark mode
+
+document.getElementById('mode-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+});
+
 // Abrir a caixa de mensagens ao clicar no ícone
 messageIcon.addEventListener('click', () => {
     messageBox.style.display = 'block';
@@ -50,8 +56,6 @@ document.querySelectorAll('.faq-question').forEach(button => {
     });
 });
 
-
-
 let menu = document.querySelector('#menu-icon');
 let sidenavbar = document.querySelector('.side-navbar');
 let content = document.querySelector('.content');
@@ -60,19 +64,6 @@ menu.onclick = () => {
     sidenavbar.classList.toggle('active');
     content.classList.toggle('active');
 }
-/*
-function lucro() {
-    // Pegando os valores dos campos de entrada
-    const receita = parseFloat(document.getElementById("receita").value);
-    const expenses = parseFloat(document.getElementById("expenses").value);
-
-    // Somando os valores
-    const lucro = receita + expenses;
-
-    // Exibindo o resultado
-    document.getElementById("resultado").textContent = lucro;
-}
-*/
 
 /* BTN MENU*/
 $(".btn-menu").click(function(){

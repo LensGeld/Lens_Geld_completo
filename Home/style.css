@@ -30,10 +30,11 @@ h1, h2, h3, p {
     font-family: 'Archivo Black', sans-serif;
 }
 
+
 /* side navbar*/
  .main{
     width: 100%;
-    background-color: #ececec;
+    background-color: var(--text);
  }
  html{
     font-size: 14px;
@@ -46,7 +47,7 @@ h1, h2, h3, p {
     position: fixed;
     height: 100vh;
     width: 260px;
-    background: var(--second-color);
+    background: var(--bars);
     overflow: hidden;
     transition: 0.5s ease;
 }
@@ -59,7 +60,7 @@ h1, h2, h3, p {
     width: 100%;
 }
 .side-navbar ul li:hover{
-    background: #6b8ea7;
+    background: var(--hover);
 }
 .side-navbar ul li:first-child{
   margin-bottom: 1rem;
@@ -69,7 +70,7 @@ h1, h2, h3, p {
   display: block;
   width: 100%;
   display: flex;
-  color: #fff;
+  color: var(--bars-text);
 }
 .side-navbar ul li a .icon{
   min-width: 60px;
@@ -89,7 +90,6 @@ h1, h2, h3, p {
 .text .LensGeld{
     padding: 20px 10px;
     line-height: 50px;
-    
 }
 .content{
     position: absolute;
@@ -97,7 +97,7 @@ h1, h2, h3, p {
     left: 260px;
     min-height: 100vh;
     transition: 0.5s ease;
-    background: #fbfbfb;
+    background: var(--background);
 }
 .top-navbar{
     width: 100%;
@@ -106,11 +106,13 @@ h1, h2, h3, p {
     justify-content: space-between;
     padding: 7px 20px;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    background: var(--bars);
 }
 
 #menu-icon{
     font-size: 34px;
     cursor: pointer;
+    color: var(--bars-text)
 }
 .content.active{
     width: calc(100% - 60px);
@@ -119,48 +121,166 @@ h1, h2, h3, p {
 .side-navbar.active{
     width: 60px;
 }
-@media (max-width:768px){
-    .content{
-        width: 100%;
-        left: 0;
-    }
-    .side-navbar{
-        width: 60px;
-        left: -60px;
-    }
-    .content.active{
-        width: calc(100% - 60px);
-        left: 60px;
-    }
-    .side-navbar.active{
-        left: 0;
-    }
+
+#expense-chart{
+    background-color: var(--background);
 }
 
 /* ---------ROOT VARIABLES----------*/
 :root {
-    --main-color: #ffffff;
-    --second-color: #1c283e; 
-
-    --color-primary: #6b8ea7;
-    --color-danger: #a73741;
-    --color-success: #3e685a;
-    --color-warning: #ffbb55;
-    --color-background: #efebe7;
-    --card-border-radius: 2rem;
-    --border-radius-1: 0.4rem;
-    --border-radius-2: 0.8rem;
-    --border-radius-3: 1.2rem;
-    --card-padding: 1.8rem;
-    --padding-1: 1.2rem;
-    --box-shadow: 0 2rem 3rem var(--color-light);
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --button: #1c283e;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --gastos: #e61d1d;
+    --dinheiro:#6B8E23;
 }
 
-.dark-mode:root{
---main-color: #1c283e ;
---second-color: #6b8ea7;
+.dark-mode{
+    --main: #1c283e ;
+    --secondary: #6b8ea7;
+    --background:#1c283e;
+    --button: #1c283e;
+    --hover: #6b8ea7;
+    --text:white;
+    --shadow: #555555;
 
+    --moon: #ffffff;
+    --sun: #0b101b;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --gastos: #A50034;
+    --dinheiro:#8BC34A;
+    }
+
+/* Switch dark mode */
+.switch input:checked + .slider {
+    background-color: var(--secondary) /* Cor do slider no modo escuro */
 }
+
+.switch input:checked + .slider:before {
+    background-color: var(--secondary) /* Cor do botão no slider quando ativado */
+}
+
+.sun-icon, .moon-icon {
+    display: inline; /* Garante que ambos sejam exibidos inline */
+    font-size: 24px; /* Ajuste o tamanho conforme necessário */
+    cursor: pointer; /* Para indicar que são interativos */
+    transition: opacity 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.sun-icon{
+    color:var(su)
+}
+
+.moon-icon {
+    opacity: 0; /* Inicialmente invisível */
+}
+
+.dark-mode .moon-icon {
+    color: var(--moon);
+    display: inline; /* Exibe a lua quando em modo escuro */
+    opacity: 1; /* Torna a lua visível */
+}
+
+.dark-mode .sun-icon {
+    opacity: 0; /* Torna o sol invisível em modo escuro */
+}
+
+.sun-icon{
+    color: var(--sun)
+}
+
+button:hover {
+    background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+    color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+}
+
+/* Alterações para os ícones de sol e lua */
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch input:checked + .slider {
+    background-color: #1c283e; /* Cor do slider quando ativo */
+}
+
+.switch input:checked + .slider:before {
+    background-color: #ffffff; /* Cor do botão do slider quando ativo */
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--background);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--background);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+.moon-icon {
+    opacity: 0; /* Começa invisível */
+}
+
+input:checked ~ .moon-icon {
+    opacity: 1; /* Torna a lua visível quando ativado */
+}
+
+input:checked ~ .sun-icon {
+    opacity: 0; /* Torna o sol invisível quando ativado */
+}
+
 
 section{
     padding: 50px, 10%;
@@ -302,7 +422,7 @@ main .insights > div span{
     font-size: 2rem;
 }
 main .insights > div.expenses span{
-    background: var(--color-danger);
+    background: var(--gastos);
 }
 main .insights > div.income span{
     background: var(--color-success);
@@ -317,10 +437,10 @@ margin: 1rem 0 0.6rem;
 font-size: 1rem;
 }
 main .insights > div.expenses h1{
-    background: var(--color-danger);
+    background: var(--gastos);
 }
 main .insights > div.income h1{
-    background: var(--color-success);
+    background: var(--bars-text);
 }
 main .insights .progress{
     position: relative;
@@ -335,7 +455,7 @@ main .insights svg{
 
 main .insights svg circle{
     fill: none;
-    stroke: var(--second-color);
+    stroke: var(--gastos);
     stroke-width: 14;
     stroke-linecap: round;
     transform: translate(5px, 5px);
@@ -375,24 +495,35 @@ main .recent-expenses{
     margin-bottom: 10%;
     width: 100%;
 }
+
+main{
+    color: var(--text);
+}
+
+.recent-expenses{
+    color: var(--text);
+}
+
 main .recent-expenses h2{
     margin-bottom: 0.8rem;
 }
+
 main .recent-expenses table{
-    background: var(--main-color);
+    background: var(--background);
     width: 100%;
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
+    border-radius: var(--gastos);
+    padding: var(--gastos);
     text-align: center;
-    transition: all 300ms ease;
+    transition: all 30ms ease;
+    color:var(--text)
 }
 main .recent-expenses table:hover{
     box-shadow: none;
 }
 main table tbody td{
     height: 2.8rem;
-    border-bottom: 1px solid var(--color-light);
-    color: var(--color-dark-variant);
+    border-bottom: 1px solid var(--text);
+    color: var(--text);
 }
 main table tbody tr:last-child td{
     border: none;
@@ -402,7 +533,7 @@ main .recent-expenses a{
     text-align: center;
     display: block;
     margin: 1rem auto;
-    color: var(--color-primary);
+    color: var(--gastos);
 }
 /*--------------TABLE-----------------*/
 .money{
@@ -411,16 +542,16 @@ main .recent-expenses a{
     width: 80%;
 }
 .btn-confirmar{
-    color: white;
+    color: var(--bars-text);
     font-weight: 400;
-    background: var(--second-color);
+    background: var(--button);
     margin-top: 10px;
     border-radius: 10px;
     height: 35px;
     width: 100px;
 }
 .btn-confirmar:hover{
-    background: var(--color-primary);
+    background: var(--hover);
 }
 .gastosname{
     font-size: 1rem;
@@ -439,9 +570,6 @@ main .recent-expenses a{
     margin-left: 50%;
     margin-bottom: 10%;
 }
-
-/*--------------Barra de Perfil------------------
-
 
 
 /*--------------PERFIL CONFIG2------------------*/
@@ -498,7 +626,7 @@ main .recent-expenses a{
 .message-icon {
     width: 60px;
     height: 60px;
-    background-color: #1c283e;
+    background-color: var(--bars-text);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -577,7 +705,7 @@ main .recent-expenses a{
 .faq-icon {
     width: 60px;
     height: 60px;
-    background-color: #1c283e;
+    background-color: var(--bars-text);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -588,7 +716,7 @@ main .recent-expenses a{
 }
 
 .faq-icon:hover {
-    background-color: #6b8ea7;
+    background-color: var(--hover);
 }
 
 .faq-icon img {
@@ -654,7 +782,7 @@ main .recent-expenses a{
 }
 
 .faq-question:hover {
-    background-color: #6b8ea7;
+    background-color: var(--hover);
 }
 
 .faq-answer {
@@ -698,3 +826,20 @@ main .recent-expenses a{
 }
 
 
+@media (max-width:768px){
+    .content{
+        width: 100%;
+        left: 0;
+    }
+    .side-navbar{
+        width: 60px;
+        left: -60px;
+    }
+    .content.active{
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+    .side-navbar.active{
+        left: 0;
+    }
+}
