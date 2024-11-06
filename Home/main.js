@@ -172,3 +172,17 @@ function updateChart() {
 
 
 }
+const firebaseConfig = {
+    apiKey: "AIzaSyB9lDG5ncGjRyJ_YM1fUofvk6dvXBRFeKg",
+  authDomain: "lensgeld-9df15.firebaseapp.com",
+  databaseURL: "https://lensgeld-9df15-default-rtdb.firebaseio.com",
+  projectId: "lensgeld-9df15",
+  storageBucket: "lensgeld-9df15.firebasestorage.app",
+  messagingSenderId: "359787924372",
+  appId: "1:359787924372:web:a1fc791f808e2cfa3a1d81",
+  measurementId: "G-7JZ3FLX7LR"
+};
+
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
