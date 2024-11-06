@@ -15,6 +15,8 @@ cadastroForm.addEventListener('submit', (e) => {
       const user = userCredential.user;
       console.log('Usuário cadastrado com sucesso:', user);
 
+      
+
       // Opcional: salvar informações adicionais no Firestore
       return db.collection('usuarios').doc(user.uid).set({
         cpf: cpf,

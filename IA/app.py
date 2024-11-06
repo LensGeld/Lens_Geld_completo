@@ -1,7 +1,35 @@
-import openai  # Corrigido o nome da importação
+import openai
+import firebase_admin
+from firebase_admin import credentials, firestore
 from flask import Flask, request, jsonify
 
+
+# Inicialização do app Flask
 app = Flask(__name__)
+
+cred = credentials.Certificate("/IA/lensgeld-9df15-firebase-adminsdk-d4rin-b36af14a39.json")
+firebase_admin.initialize_app(cred)
+
+# Inicialização do Firestore
+db = firestore.client()
+
+@app.route('/api/usuario/<user_id>', methods=['GET'])
+def obter_nome_usuario(user_id):
+    try:
+        # Busca o documento do usuário no Firestore pela nova coleção 'firstname'
+        usuario_ref = db.collection('firstname').document(user_id)
+        usuario = usuario_ref.get()
+
+         # Verifica se o usuário existe
+        if usuario.exists:
+            # Obtém o nome do usuário do documento
+            nome = usuario.to_dict().get('nome')
+            return jsonify({'nome': nome})
+        else:
+            return jsonify({'erro': 'Usuário não encontrado'}), 404
+
+    except Exception as e:
+        return jsonify({'erro': str(e)}), 500
 
 # Chave de API da OpenAI
 openai.api_key = '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'
