@@ -11,7 +11,7 @@ document.getElementById('user-input').addEventListener('keypress', function(e) {
 });
 
 // Função para enviar a mensagem e obter resposta da IA
-function enviarMensagem() {
+async function enviarMensagem() {
     const inputField = document.getElementById('user-input');
     const mensagem = inputField.value.trim();
     
@@ -21,10 +21,32 @@ function enviarMensagem() {
     adicionarMensagem(mensagem, 'user-message');
 
     // Obter resposta da IA
-    obterRespostaIA(mensagem); // Chama a função para obter a resposta da IA
+    await obterRespostaIA(mensagem);  // Chama a função para obter a resposta da IA
 
     // Limpar o campo de entrada
     inputField.value = '';
+}
+
+// Função para obter resposta da IA
+async function obterRespostaIA(mensagem) {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/ma.IA', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ pergunta: mensagem })
+        });
+
+        const data = await response.json();
+
+        // Exibir a resposta da IA
+        if (data.resposta) {
+            adicionarMensagem(data.resposta, 'ai-message');
+        }
+    } catch (error) {
+        console.error('Erro ao obter resposta da IA:', error);
+    }
 }
 
 // Função para adicionar mensagens ao chat
@@ -79,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 // Seleciona os elementos da página
 let menu = document.querySelector('#menu-icon');
 let sidenavbar = document.querySelector('.side-navbar');
@@ -99,4 +120,3 @@ document.querySelector(".btn-menu").addEventListener('click', () => {
 document.querySelector(".btn-closed").addEventListener('click', () => {
     document.querySelector(".menu").classList.remove('show');
 });
-
