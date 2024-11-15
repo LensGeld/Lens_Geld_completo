@@ -1,0 +1,522 @@
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url('/IA/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inv';
+    src: url('/IA/static/fonts/Inversionz.ttf') format('truetype');
+}
+
+body {
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    font-family: 'Archivo Black', sans-serif;
+    color: var(--text);
+}
+
+:root {
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --button: #1c283e;
+    --modal-background: #fefefe;
+    --modal-border: #888;
+}
+
+.dark-mode {
+    --main: #1c283e;
+    --secondary: #6b8ea7;
+    --background: #1c283e;
+    --text: white;
+    --shadow: #555555;
+    --moon: #1c283e;
+    --sun: white;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --button: #efebe7;
+    --modal-background: #333333;
+    --modal-border: #666666;
+}
+
+/* Switch dark mode */
+.switch input:checked + .slider {
+    background-color: var(--secondary) /* Cor do slider no modo escuro */
+}
+
+.switch input:checked + .slider:before {
+    background-color: var(--secondary) /* Cor do botão no slider quando ativado */
+}
+
+.sun-icon, .moon-icon {
+    display: inline; /* Garante que ambos sejam exibidos inline */
+    font-size: 24px; /* Ajuste o tamanho conforme necessário */
+    cursor: pointer; /* Para indicar que são interativos */
+    transition: opacity 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.moon-icon {
+    opacity: 0; /* Inicialmente invisível */
+}
+
+.dark-mode .moon-icon {
+    display: inline; /* Exibe a lua quando em modo escuro */
+    opacity: 1; /* Torna a lua visível */
+}
+
+.dark-mode .sun-icon {
+    opacity: 0; /* Torna o sol invisível em modo escuro */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch input:checked + .slider {
+    background-color: #1c283e; /* Cor do slider quando ativo */
+}
+
+.switch input:checked + .slider:before {
+    background-color: #ffffff; /* Cor do botão do slider quando ativo */
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--background);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+.moon-icon {
+    opacity: 0; /* Começa invisível */
+}
+
+input:checked ~ .moon-icon {
+    opacity: 1; /* Torna a lua visível quando ativado */
+}
+
+input:checked ~ .sun-icon {
+    opacity: 0; /* Torna o sol invisível quando ativado */
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--main);
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px var(--shadow);
+}
+
+h2 {
+    text-align: center;
+    color: var(--secondary);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.progress-bar {
+    position: relative;
+    background-color: var(--background);
+    border-radius: 5px;
+    margin: 20px 0;
+    height: 20px;
+}
+
+.progress {
+    width: 10%;
+    height: 100%;
+    background-color: var(--button);
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.options {
+    margin-left: 20px;
+}
+
+.options input {
+    margin-right: 10px;
+}
+
+button {
+    background-color: var(--button);
+    color: var(--user-text);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: var(--hover);
+}
+
+.result {
+    display: none;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text);
+    text-align: center;
+}
+
+.investments {
+    margin-top: 20px;
+    display: none;
+}
+
+.investments ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.investments li {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.investments a {
+    color: var(--button);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.investments a:hover {
+    text-decoration: underline;
+    color: var(--hover);
+}
+
+/* Modal de Resultado */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.modal-content {
+    background-color: var(--modal-background);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--modal-border);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    color: var(--text);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--hover);
+}
+
+/*TOP-NAVBAR*/
+
+.icon-switch-container {
+    display: flex; /* Usar flexbox para alinhar os itens */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 5%; /* Espaçamento entre os itens (ajuste conforme necessário) */
+}
+
+.title-container {
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 10px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+    color: var(--bars-text)
+}
+
+#LG{
+    font-family: "inv";
+    align-self: center;
+    margin-bottom: -2%;
+}
+
+.top-navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 7px 20px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--bars);
+    margin-bottom: 20px;
+    gap: 15px;
+    justify-content: center;
+    gap: 10%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+/* Ícone do menu */
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/*perfil config2*/
+.btn-menu {
+    width: 56px;
+    height: 56px;
+    float: right;
+    background:'bx bxs-user';
+    background-position: center;
+    text-align: center;
+    border-radius: 56px;
+    cursor: pointer;
+}
+
+.bx-menu:before {
+    content: "\eb5f";
+}
+
+.menu {
+    align-content: auto;
+    display:none;
+    padding-right: 10px;
+    width: 25%;
+    height: 25%;
+    position: fixed;
+    text-align: center;
+    background-color: var(--secondary);
+    border-radius: 10px;
+    margin-top: 55px;
+    right: 0;
+    box-shadow: #333;
+    justify-content: flex-start;
+}
+
+.menu.show {
+    display: block;
+}
+
+.out{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.conf{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.edit{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.menu ul, #mode-toggle {
+    width: 100%; 
+    float: right; 
+    text-align: left;
+}
+
+.menu li a, #mode-toggle {
+    font-size: 1.3em;
+    padding: 1.5% 3%;
+    color: var(--menu-text);
+}
+.menu li a:hover{
+    color: var(--hover);
+    font-size: 1.4em;
+}
+
+.btn-closed{
+    font-size: 1.5em;
+    color: #1c283e;
+    float: right; cursor: pointer;
+    margin: 2% 10% 0 0;
+}
+
+.profileicon{
+    padding-left: 10px;
+    color: var(--menu-text);
+}
+
+/* Estilo para o botão de menu */
+#menu-icon {
+    font-size: 34px; /* Tamanho do ícone de menu */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    color: var(--bars-text);
+}
+
+.content.active{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+/* ----------SIDEBAR----------- */
+/* side navbar*/
+.main{
+    width: 100%;
+    background-color: var(--text);
+ }
+ html{
+    font-size: 14px;
+ }
+ body{
+    width: 100vw;
+    height: 100vh;
+ }
+.side-navbar{
+    position: fixed;
+    height: 100vh;
+    width: 260px;
+    background: var(--bars);
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+.side-navbar ul{
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.side-navbar ul li{
+    width: 100%;
+}
+.side-navbar ul li:hover{
+    background: var(--hover);
+}
+.side-navbar ul li:first-child{
+  margin-bottom: 1rem;
+  background: none;
+}
+.side-navbar ul li a{
+  display: block;
+  width: 100%;
+  display: flex;
+  color: var(--bars-text);
+}
+.side-navbar ul li a .icon{
+  min-width: 60px;
+  display: block;
+  font-size: 25px;
+  line-height: 60px;
+  height: 60px0;
+  text-align: center;
+}
+.side-navbar ul li a .text{
+    display: block;
+    padding: 13px 20px;
+    line-height: 30px;
+    height: 60px;
+    white-space: nowrap;
+}
+.text .LensGeld{
+    font-family: "inv";
+    padding: 20px 10px;
+    line-height: 50px;
+  
+}
+
+.content{
+    position: absolute;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: 100vh;
+    transition: 0.5s ease;
+    background: var(--background);
+}
+
+.content.active{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.side-navbar.active{
+    width: 60px;
+}
