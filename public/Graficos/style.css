@@ -191,165 +191,132 @@ canvas {
   width: 80%;
   margin: 20px auto;
 }
-/* ----------SIDEBAR----------- */
-/* Estilizando o rodapé */
-.footer {
-  background-color: var(--bars);
-  color: #ffffff;
-  padding: 20px 0;
-  text-align: center;
-  margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-links {
-  margin-top: 10px;
-}
-
-.footer-links a {
-  color: #ffffff;
-  margin: 0 10px;
+ /* ----------------------------------------------------BODY-------------------------------------------------------------------*/
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  appearance: none;
   text-decoration: none;
-  font-size: 0.9em;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-/* Estilos para garantir que o conteúdo da página empurre o rodapé para o fundo */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Garante que o conteúdo principal tenha altura mínima da tela */
-}
-
-.main-content {
-  flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
-}
-
-/* side navbar*/
-.logo{
-  display: flex;
-  align-items: center;
-}
-.logo img{
-  width: 100px;
-}
-.home-text {
-  flex: 1 1 17rem;
-}
-.home-img {
-  flex: 1 1 75rem;
-}
-.home {
-  padding-left: 5%;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background: var(--color-background);
-  gap: 1rem;
-}
-
-img{
-  width: 100%;
-  border-radius: 15%;
+  list-style: none;
+  font-family: 'ArchivoBlack';
  }
-.LensGeld{
-  font-family: "inv";
-  font-size: 70px;
-  font-weight: bolder;
-  color: white;
-}
-.main{
-  width: 100%;
-  background-color: #ececec;
-}
-html{
+ html{
   font-size: 14px;
 }
-.side-navbar{
-  width: 250px;
-  height: 100vh;
-  background: var(--bars);
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow: hidden;
-  transition: 0.5s ease;
-}
-.side-navbar ul{
-  padding: 0;
-  top: 0;
-  left: 0;
-}
-
-.side-navbar ul li{
-  display: flex;
-  align-items: center;
-}
-
-.side-navbar ul li:hover{
-  background: var(--hover);
-}
-
-.side-navbar ul li:first-child{ /*impede o hover no lg*/
-margin-bottom: 1rem;
-background: none;
-}
-
-.side-navbar ul li a{   
-display: block;
-width: 100%;
-display: flex;
-color: var(--bars-text);
-}
-
-.side-navbar ul li a .icon{
-min-width: 60px;
-display: block;
-font-size: 20px;
-line-height: 60px;
-height: 60px0;
-text-align: center;
-text-decoration: none;
-}
-.side-navbar ul li a .text{
-  display: block;
-  padding: 13px 20px;
-  line-height: 30px;
-  height: 60px;
-  white-space: nowrap;
-}
-.text .LensGeld{
-  padding: 20px 10px;
-  line-height: 50px;
-  
-}
-.content{
-  flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+/* Garantir que o gráfico e as seções abaixo não saiam do layout */
+body {
+  background-color: var(--background);
   display: flex;
   flex-direction: column;
-  position: absolute;
-  width: calc(100% - 250px);
-  left: 250px;
-  min-height: 100vh;
-  transition: 0.5s ease;
-  background: var(--background);
+  align-items: center;
+  padding: 2px;
 }
 
+ /* Container geral que contém todas as seções */
+ .container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura máxima para evitar que o conteúdo ultrapasse a tela */
+  margin: 0 auto; /* Centraliza o conteúdo da página */
+  padding: 20px; /* Adiciona um padding para evitar que o conteúdo grude nas bordas */
+  box-sizing: border-box; /* Garante que o padding seja contado no tamanho total */
+}
+button:hover {
+  background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+  color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+}
+
+section{
+  padding: 50px, 10%;
+}
 *::selection{
   color: #ffffff;
   background: #6b8ea7;
 }
-
+img{
+  width: 100%;
+  border-radius: 15%;
+ }
+ main{
+  color: var(--text);/*cor dos textos no main*/
+}
+   /*--------------------------------------------SIDE-NAVBAR--------------------------------------------*/
+   .main{
+    width: 100%;
+    background-color: var(--bars);
+ }
+ .side-navbar{
+    position: fixed;
+    height: 100vh;
+    width: 260px;
+    background: var(--bars);
+    overflow: hidden;
+    transition: 0.5s ease;
+    z-index: 0;
+}
+.side-navbar ul{
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.side-navbar ul li{
+    width: 100%;
+}
+.side-navbar ul li:hover{
+    background: var(--hover);
+}
+/*Impede hover na img e no LG*/
+.side-navbar ul li:first-child{
+    margin-bottom: 1rem;
+    background: none;
+  }
+  /*compacta os textos e formata eles*/
+  .side-navbar ul li a{
+    display: block;
+    width: 100%;
+    display: flex;
+    color: var(--bars-text);
+  }
+  /*separa os itens e aumenta o tamanho deles*/
+  .side-navbar ul li a .icon{
+    min-width: 60px;
+    display: block;
+    font-size: 25px;
+    line-height: 60px;
+    height: 60px0;
+    text-align: center;
+  }
+  /* Muda o tamanho dos textos*/
+.side-navbar ul li a .text{
+    display: block;
+    padding: 13px 20px;
+    line-height: 30px;
+    height: 60px;
+    white-space: nowrap;
+}
+/*Coloca o texto LG no lugar*/
+.LensGeld{
+    color:var(--bars-text);
+    font-family: 'inv';
+    padding: 20px 10px;
+    line-height: 50px;
+}
+.content{
+    position: absolute;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: 100vh;
+    transition: 0.5s ease;
+    background: var(--background);
+    padding-bottom: 50px;
+}
+.content.active{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+.side-navbar.active{
+    width: 60px;
+}
 /*TOP-NAVBAR*/
 
 .title-container {
@@ -481,6 +448,47 @@ text-decoration: none;
   width: calc(100% - 60px);
   left: 60px;
 }
+/* Estilizando o rodapé */
+.footer {
+  background-color: var(--bars);
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para garantir que o conteúdo da página empurre o rodapé para o fundo */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o conteúdo principal tenha altura mínima da tela */
+}
+
+.main-content {
+  flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
+}
+
 /* Media queries para responsividade */
 @media (max-width: 768px) {
   .side-navbar {

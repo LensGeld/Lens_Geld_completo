@@ -12,11 +12,9 @@
     { name: "Seguros", color: "#33C1FF" }
 ];*/
 // Referências aos elementos
-const btnGastos = document.getElementById("btn-gastos");
-const popUpGastos = document.getElementById("pop-up-gastos");
-const popUpValor = document.getElementById("pop-up-valor");
-const closePopUp = document.getElementById("close-pop-up");
-const closePopUpValor = document.getElementById("close-pop-up-valor");
+const btnGastos = document.getElementById('btn-gastos');
+const modalGastos = document.getElementById('modal-gastos');
+const closeModalGastos = document.getElementById('close-modal-gastos');
 const btnAdicionar = document.getElementById("btn-adicionar");
 const btnSalvar = document.getElementById("btn-salvar");
 const btnSalvarRecorrente = document.getElementById("btn-salvar-recorrente");
@@ -25,70 +23,33 @@ const gastoList = document.querySelectorAll(".gasto-item");
 const valorGastoInput = document.getElementById("valor-gasto");
 const corGastoInput = document.getElementById("cor-gasto");
 const tabela = document.getElementById("tabela-gastos"); // Supõe que existe uma tabela no HTML para exibir os gastos
-
-// Função para mostrar o pop-up de gastos
-btnGastos.addEventListener("click", () => {
-    popUpGastos.style.visibility = "visible";
-});
-
-// Fechar o pop-up de gastos
-closePopUp.addEventListener("click", () => {
-    popUpGastos.style.visibility = "hidden";
-});
-
-// Fechar o pop-up de adicionar valor
-closePopUpValor.addEventListener("click", () => {
-    popUpValor.style.visibility = "hidden";
-});
-
-// Ação de clicar em um gasto pré-definido
-gastoList.forEach(gasto => {
-    gasto.addEventListener("click", () => {
-        popUpValor.style.visibility = "visible";
-    });
-});
-
-// Adicionar valor no gasto
-btnAdicionar.addEventListener("click", () => {
-    const valor = valorGastoInput.value;
-    const cor = corGastoInput.value;
-    
-    // Exibir na tabela ou gráfico
-    const tr = document.createElement("tr");
-    tr.style.backgroundColor = cor;
-    tr.innerHTML = `<td>Gasto</td><td>${valor}</td><td style="background-color:${cor};">${valor}</td>`;
-    tabela.appendChild(tr);
-
-    // Fechar pop-up após adicionar o gasto
-    popUpValor.style.visibility = "hidden";
-});
-
-// Adicionar novo gasto
-btnSalvar.addEventListener("click", () => {
-    const nome = document.getElementById("novo-gasto-nome").value;
-    const valor = document.getElementById("novo-gasto-valor").value;
-    const cor = document.getElementById("novo-gasto-cor").value;
-
-    // Exibir novo gasto na tabela ou gráfico
-    const tr = document.createElement("tr");
-    tr.style.backgroundColor = cor;
-    tr.innerHTML = `<td>${nome}</td><td>${valor}</td><td style="background-color:${cor};">${valor}</td>`;
-    tabela.appendChild(tr);
-
-    popUpGastos.style.visibility = "hidden";
-});
-
-// Salvar gasto recorrente
-btnSalvarRecorrente.addEventListener("click", () => {
-    // Similar à lógica de salvar, mas com alguma diferenciação para gasto recorrente
-    alert("Gasto recorrente salvo!");
-    popUpGastos.style.visibility = "hidden";
-});
-
-
 const messageIcon = document.getElementById('open-message-box');
 const messageBox = document.getElementById('message-box');
 const closeMessageBox = document.getElementById('close-message-box');
+  fetchNews(); // Chama a função para as notícias
+const btnValor = document.getElementById('btn-salvar');
+const modalValor = document.getElementById('modal-valor');
+const closeModalValor = document.getElementById('close-modal-valor');
+
+// Função para abrir o modal de Gastos
+btnGastos.addEventListener('click', () => {
+    modalGastos.classList.add('show');
+});
+
+// Função para fechar o modal de Gastos
+closeModalGastos.addEventListener('click', () => {
+    modalGastos.classList.remove('show');
+});
+
+// Função para abrir o modal de Valor
+btnValor.addEventListener('click', () => {
+    modalValor.classList.add('show');
+});
+
+// Função para fechar o modal de Valor
+closeModalValor.addEventListener('click', () => {
+    modalValor.classList.remove('show');
+});
 
 // Dark mode
 document.getElementById('mode-toggle').addEventListener('click', function() {
@@ -265,6 +226,7 @@ function updateChart() {
 
 let newsOffset = 0; // Variável para controlar o número de notícias carregadas
 
+// Função para buscar notícias (NewsAPI)
 async function fetchNews() {
   const url = 'https://getnews-f6mscryaba-uc.a.run.app'; // URL da API de notícias
   try {
@@ -282,66 +244,96 @@ async function fetchNews() {
     }
 
     newsContainer.innerHTML = ''; // Limpa o conteúdo anterior
+
     loadMoreNews(articles); // Carrega a primeira parte das notícias
     setupCarousel(articles); // Configura o carrossel com as notícias
+
   } catch (error) {
     console.error('Erro ao buscar notícias:', error);
     alert('Ocorreu um erro ao carregar as notícias. Tente novamente mais tarde.');
   }
 }
 
+// Função para carregar mais notícias no carrossel
 function loadMoreNews(articles) {
-  const newsContainer = document.getElementById('news-container');
-  if (!newsContainer) return;
-
-  // Carrega apenas 5 notícias de cada vez
-  const newsToLoad = articles.slice(newsOffset, newsOffset + 5);
-  newsOffset += 5; // Atualiza o offset para a próxima carga de notícias
-
-  newsToLoad.forEach((article) => {
-    const newsItem = document.createElement('div');
-    newsItem.classList.add('news-item');
-
-    const imageUrl = article.urlToImage || 'default-image.jpg';
-    const image = document.createElement('img');
-    image.src = imageUrl;
-    image.alt = article.title;
-    image.classList.add('news-image');
-
-    newsItem.innerHTML = `
-      <h3>${article.title}</h3>
-      <p>${article.description || 'Descrição não disponível'}</p>
-      <a href="${article.url}" target="_blank">Leia mais</a>
-    `;
-    newsItem.insertBefore(image, newsItem.firstChild);
-
-    newsContainer.appendChild(newsItem);
-  });
-}
-
+    const newsContainer = document.getElementById('news-container');
+    if (!newsContainer) return;
+  
+    // Carrega apenas o número de notícias baseado no espaço visível
+    const itemWidth = 320; // Largura de cada item
+    const visibleItems = Math.floor(newsContainer.clientWidth / itemWidth); // Quantos itens cabem na tela
+    const newsToLoad = articles.slice(newsOffset, newsOffset + visibleItems);
+    newsOffset += visibleItems; // Atualiza o offset para a próxima carga de notícias
+  
+    newsToLoad.forEach((article) => {
+      const newsItem = document.createElement('div');
+      newsItem.classList.add('news-item');
+  
+      const imageUrl = article.urlToImage || 'default-image.jpg';
+      const image = document.createElement('img');
+      image.src = imageUrl;
+      image.alt = article.title;
+      image.classList.add('news-image');
+  
+      newsItem.innerHTML = `
+        <h3>${article.title}</h3>
+        <p>${article.description || 'Descrição não disponível'}</p>
+        <a href="${article.url}" target="_blank">Leia mais</a>
+      `;
+      newsItem.insertBefore(image, newsItem.firstChild);
+  
+      newsContainer.appendChild(newsItem);
+    });
+  }
+  
 // Função de controle do carrossel de notícias
 function setupCarousel(articles) {
-  const newsContainer = document.getElementById('news-container');
-  const scrollAmount = 320; // Quantidade de pixels para a rolagem
-
-  if (!newsContainer) {
-    console.error('Elemento do carrossel não encontrado.');
-    return;
-  }
-
-  newsContainer.addEventListener('scroll', () => {
-    // Verifica se o usuário chegou ao final do carrossel
-    if (newsContainer.scrollLeft + newsContainer.clientWidth >= newsContainer.scrollWidth) {
-      // Carrega mais notícias
-      loadMoreNews(articles);
-    }
-  });
+    const newsContainer = document.getElementById('news-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
   
-  // Inicialmente, ao carregar, carrega a primeira página de notícias
-  loadMoreNews(articles);
-}
-
-// Função para carregar as notícias ao carregar a página
-window.onload = function() {
-  fetchNews(); // Chama a função para carregar as notícias
-};
+    if (!newsContainer || !prevBtn || !nextBtn) {
+      console.error('Elementos do carrossel não encontrados.');
+      return;
+    }
+  
+    // Calcular a quantidade de itens que cabem na tela
+    const itemWidth = 320; // Ajuste a largura de cada item
+    const visibleItems = Math.floor(newsContainer.clientWidth / itemWidth); // Quantos itens são visíveis por vez
+    const scrollAmount = itemWidth * visibleItems; // Quantidade de pixels para a rolagem
+  
+    // Função de rolagem para a esquerda (seta anterior)
+    prevBtn.addEventListener('click', () => {
+      // Verifica se há espaço à esquerda para rolar
+      if (newsContainer.scrollLeft > 0) {
+        newsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    });
+  
+    // Função de rolagem para a direita (seta próxima)
+    nextBtn.addEventListener('click', () => {
+      // Verifica se há mais conteúdo para rolar à direita
+      if (newsContainer.scrollLeft + newsContainer.clientWidth < newsContainer.scrollWidth) {
+        newsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    });
+  
+    // Detecta quando o usuário chega ao final do carrossel para carregar mais notícias
+    newsContainer.addEventListener('scroll', () => {
+      // Verifica se o usuário chegou ao final do carrossel
+      if (newsContainer.scrollLeft + newsContainer.clientWidth >= newsContainer.scrollWidth) {
+        loadMoreNews(articles);
+      }
+    });
+  
+    // Inicialmente, carrega as primeiras notícias
+    loadMoreNews(articles);
+  }
+  
+  
+  window.addEventListener('resize', function() {
+    setupCarousel(articles);  // Recalcula a quantidade de itens visíveis
+  });
+  console.log('Item width:', itemWidth);
+console.log('Visible items:', visibleItems);
+console.log('Scroll amount:', scrollAmount);

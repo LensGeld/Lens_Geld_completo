@@ -34,30 +34,6 @@ h1, h2, h3, p {
     font-family: 'Archivo Black';
 }
 
-.logo{
-    display: flex;
-    align-items: center;
-}
-.logo img{
-    width: 100px;
-}
-.home-text {
-    flex: 1 1 17rem;
-}
-.home-img {
-    flex: 1 1 75rem;
-}
-.home {
-    padding-left: 5%;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background: var(--color-background);
-    gap: 1rem;
-}
-
 img{
     width: 100%;
     border-radius: 15%;

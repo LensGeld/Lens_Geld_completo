@@ -20,43 +20,46 @@
 </head>
 <body>
     
- <!-- sidebar-->
- <div class="main">
-    <div class="side-navbar">
-        <ul>
-            <li><a href="#">
-                <span class="icon"><img src="/Lens_Geld_completo/public/IA/static/img/Logo Lens_Geld.png"></span>
-                <span class="text"><h1 class="LensGeld">l<br>g</h1></span>
-            </a></li>
-           
-            <li><a href="/Lens_Geld_completo/public/IA/templates/index.html">
-                <span class="icon"><i class='bx bx-network-chart'></i></span>
-                <span class="text"><h2>IA</h2></span>
-            </a></li>
+    <!-- SIDE-BAR -->
+    <div class="main">
+        <div class="side-navbar">
+            <ul>
+                <li><a href="#">
+                    <span class="icon"><img src="/Lens_Geld_completo/public/IA/static/img/Logo Lens_Geld.png"></span>
+                    <span class="text"><h1 class="LensGeld">l<br>g</h1></span>
+                </a></li>
 
-            <li><a href="/Lens_Geld_completo/public/Teste de perfil/index.html">
-                <span class="icon"><i class='bx bx-user-check'></i></span>
-                <span class="text"><h2>Teste de Perfil</h2></span>
-            </a></li>
-           
-            
-            <li><a href="/Lens_Geld_completo/public/Configurações/index.html">
-                <span class="icon"><i class='bx bx-cog'></i></span>
-                <span class="text"><h2>Configurações</h2></span>
-            </a></li>
+                <li><a href="/Lens_Geld_completo/public/Home/index.html">
+                    <span class="icon"><i class='bx bxs-home-alt-2'></i></span>
+                    <span class="text"><h2>Home</h2></span>
+                </a></li>
 
-           
-            <li><a href="/Lens_Geld_completo/public/Ensino/index.html">
-                <span class="icon"><i class='bx bxs-graduation'></i></span>
-                <span class="text"><h2>Estudos</h2></span>
-            </a></li>
+                <li><a href="/Lens_Geld_completo/public/IA/templates/index.html">
+                    <span class="icon"><i class='bx bx-network-chart'></i></span>
+                    <span class="text"><h2>IA</h2></span>
+                </a></li>
+      
+                <li><a href="/Lens_Geld_completo/public/Teste de perfil/index.html">
+                    <span class="icon"><i class='bx bx-user-check'></i></span>
+                    <span class="text"><h2>Teste de Perfil</h2></span>
+                </a></li>
 
-            <li><a href="/Lens_Geld_completo/public/Gastos/index.html">
-                <span class="icon"><i class='bx bxs-graduation'></i></span>
-                <span class="text"><h2>Analise de Gastos</h2></span>
-            </a></li>
-        </ul>
-    </div>
+                <li><a href="/Lens_Geld_completo/public/Ensino/index.html">
+                    <span class="icon"><i class='bx bxs-graduation'></i></span>
+                    <span class="text"><h2>Estudos</h2></span>
+                </a></li>
+      
+                <li><a href="/Lens_Geld_completo/public/Graficos/index.html">
+                    <span class="icon"><i class='bx bx-line-chart'></i></span>
+                    <span class="text"><h2>Analises</h2></span>
+                </a></li>
+
+                <li><a href="/Lens_Geld_completo/public/Configurações/index.html">
+                    <span class="icon"><i class='bx bx-cog'></i></span>
+                    <span class="text"><h2>Configurações</h2></span>
+                </a></li>
+            </ul>
+        </div>
 
      <!-- Mini Tela de Mensagens -->
      <div class="message-container">
@@ -243,7 +246,43 @@
             </div>
             <small class="text-muted">Este mês</small>
         </div>
+        <!-- Botão "Gastos pré-definidos" para abrir o modal -->
+        <button id="btn-gastos" class="btn-gastos">Gastos pré-definidos</button>
 
+        <!-- Modal de Gastos Pré-definidos -->
+        <div id="modal-gastos" class="modal hidden">
+            <div class="modal-content">
+                <div class="search-container">
+                    <input type="text" id="search-gastos" placeholder="Pesquisar gastos...">
+                    <button id="search-btn">🔍</button>
+                </div>
+                <div class="gastos-list">
+                    <button class="gasto-item" style="background-color: #FF5733">Aluguel</button>
+                    <button class="gasto-item" style="background-color: #C70039">Conta de luz</button>
+                    <button class="gasto-item" style="background-color: #900C3F">Mercado</button>
+                    <button class="gasto-item" style="background-color: #581845">Internet</button>
+                </div>
+                <h3>Adicionar Novo Gasto</h3>
+                <input type="text" id="novo-gasto-nome" placeholder="Nome do gasto">
+                <input type="number" id="novo-gasto-valor" placeholder="Valor do gasto">
+                <input type="color" id="novo-gasto-cor">
+                <button id="btn-salvar">Salvar</button>
+                <button id="btn-salvar-recorrente">Salvar Gasto Recorrente</button>
+                <button class="close-btn" id="close-modal-gastos">X</button>
+            </div>
+        </div>
+        
+        <!-- Modal para Adicionar Valor -->
+        <div id="modal-valor" class="modal hidden">
+            <div class="modal-content">
+                <h1>Adicione o Valor</h1>
+                <input type="number" id="valor-gasto" placeholder="Valor do gasto">
+                <button id="btn-adicionar">Adicionar Gasto</button>
+                <input type="color" id="cor-gasto">
+                <button id="btn-mudar-cor">Mudar Cor</button>
+                <button class="close-btn" id="close-modal-valor">X</button>
+            </div>
+        </div>
             <!------TABELA GASTOS------->
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -276,51 +315,28 @@
         <div id="chart-container">
             <canvas id="expense-chart"></canvas>
         </div>
-        <!-- Botão "Gastos pré-definidos" para abrir o pop-up -->
-        <button id="btn-gastos" class="btn-gastos">Gastos pré-definidos</button>
-        
-        <!-- Pop-up de Gastos Pré-definidos -->
-        <div id="pop-up-gastos" class="pop-up hidden">
-            <div class="pop-up-content">
-                <div class="search-container">
-                    <input type="text" id="search-gastos" placeholder="Pesquisar gastos...">
-                    <button id="search-btn">🔍</button>
-                </div>
-                <div class="gastos-list">
-                    <button class="gasto-item" style="background-color: #FF5733">Aluguel</button>
-                    <button class="gasto-item" style="background-color: #C70039">Conta de luz</button>
-                    <button class="gasto-item" style="background-color: #900C3F">Mercado</button>
-                    <button class="gasto-item" style="background-color: #581845">Internet</button>
-                </div>
-                <h3>Adicionar Novo Gasto</h3>
-                <input type="text" id="novo-gasto-nome" placeholder="Nome do gasto">
-                <input type="number" id="novo-gasto-valor" placeholder="Valor do gasto">
-                <input type="color" id="novo-gasto-cor">
-                <button id="btn-salvar">Salvar</button>
-                <button id="btn-salvar-recorrente">Salvar Gasto Recorrente</button>
-                <button class="close-btn" id="close-pop-up">X</button>
-            </div>
-        </div>
-        
-        <!-- Pop-up para Adicionar Valor -->
-        <div id="pop-up-valor" class="pop-up hidden">
-            <div class="pop-up-content">
-                <h1>Adicione o Valor</h1>
-                <input type="number" id="valor-gasto" placeholder="Valor do gasto">
-                <button id="btn-adicionar">Adicionar Gasto</button>
-                <input type="color" id="cor-gasto">
-                <button id="btn-mudar-cor">Mudar Cor</button>
-                <button class="close-btn" id="close-pop-up-valor">X</button>
-            </div>
-        </div>
-        <!-- Seção de Notícias -->
-<div class="news-section">
-    <h2>Últimas Notícias</h2>
-    <div id="news-container" class="news-container">
-        <!-- As notícias serão carregadas aqui via JavaScript -->
 
-    </main>
-</div>
+        <!-- Seção de Notícias -->
+        <section class="news">
+            <h2>Notícias de Mercado</h2>
+            <div class="news-carousel">
+              <button id="prev-btn" class="nav-btn">&#10094;</button>
+              <div id="news-container"></div>
+              <button id="next-btn" class="nav-btn">&#10095;</button>
+            </div>
+          </section> 
+          <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Lens Geld | Desenvolvido por Sky Fenix</p>
+                <nav class="footer-links">
+                    <a href="link_do_site_da_empresa">Site da Empresa</a>
+                    <a href="https://www.instagram.com/skyfenix862/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+                    <a href="mailto:contato@suaempresa.com">Contate-nos</a>
+                    <a href="/Lens_Geld_completo/public/Termos de uso/index.html">Termos de Uso</a>
+                    <a href="/Lens_Geld_completo/public/politica de privacidade/index.html">Política de Privacidade</a>
+                    <!-- Adicione outros links conforme necessário -->
+                </nav>
+            </div> 
 
     <!-- <h1 id="bem"> lENS <br>gELD</h1> -->
     <!-- link para JS personalizado-->

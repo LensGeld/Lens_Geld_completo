@@ -9,7 +9,7 @@
 }
 
 .LensGeld{
-    font-family: 'Inversionz';
+    font-family: 'Inve';
     font-size: 70px;
     font-weight: bolder;
     color: #eeeded;
@@ -19,7 +19,7 @@ body {
     background-color: var(--background);
     margin: 0;
     padding: 0;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo Black';
     color: var(--text);
 }
 
@@ -42,7 +42,6 @@ body {
     --modal-background: #fefefe;
     --modal-border: #888;
 }
-
 .dark-mode {
     --main: #1c283e;
     --secondary: #6b8ea7;
@@ -387,7 +386,7 @@ button:hover {
     height: 25%;
     position: fixed;
     text-align: center;
-    background-color: var(--secondary);
+    background-color: var(--bars-text);
     border-radius: 10px;
     margin-top: 55px;
     right: 0;
@@ -457,117 +456,132 @@ button:hover {
     left: 60px;
 }
 
-/* ----------SIDEBAR----------- */
-
-/* side navbar*/
-
-.logo{
+ /* ----------------------------------------------------BODY-------------------------------------------------------------------*/
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    appearance: none;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'ArchivoBlack';
+   }
+   html{
+    font-size: 14px;
+  }
+  /* Garantir que o gráfico e as seções abaixo não saiam do layout */
+  body {
+    background-color: var(--background);
     display: flex;
+    flex-direction: column;
     align-items: center;
-}
-.logo img{
-    width: 100px;
-}
-img{
+    padding: 2px;
+  }
+  
+   /* Container geral que contém todas as seções */
+   .container {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima para evitar que o conteúdo ultrapasse a tela */
+    margin: 0 auto; /* Centraliza o conteúdo da página */
+    padding: 20px; /* Adiciona um padding para evitar que o conteúdo grude nas bordas */
+    box-sizing: border-box; /* Garante que o padding seja contado no tamanho total */
+  }
+  button:hover {
+    background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+    color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+  }
+  
+  section{
+    padding: 50px, 10%;
+  }
+  *::selection{
+    color: #ffffff;
+    background: #6b8ea7;
+  }
+  img{
     width: 100%;
     border-radius: 15%;
    }
-
-.main{
-    width: 100%;
-    background-color: var(--text);
- }
- html{
-    font-size: 14px;
- }
- body{
-    width: 100vw;
-    height: 100vh;
- }
-.side-navbar{
-    position: fixed;
-    height: 100vh;
-    width: 260px;
-    background: var(--bars);
-    overflow: hidden;
-    transition: 0.5s ease;
-}
-.side-navbar ul{
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.side-navbar ul li{
-    width: 100%;
-}
-.side-navbar ul li:hover{
-    background: var(--hover);
-}
-.side-navbar ul li:first-child{
-  margin-bottom: 1rem;
-  background: none;
-}
-.side-navbar ul li a{
-  display: block;
-  width: 100%;
-  display: flex;
-  color: var(--bars-text);
-}
-.side-navbar ul li a .icon{
-  min-width: 60px;
-  display: block;
-  font-size: 25px;
-  line-height: 60px;
-  height: 60px;
-  text-align: center;
-}
-.side-navbar ul li a .text{
-    display: block;
-    padding: 13px 20px;
-    line-height: 30px;
-    height: 60px;
-    white-space: nowrap;
-}
-.text .LensGeld{
-    font-family: "inv";
-    padding: 20px 10px;
-    line-height: 50px;
-  
-}
-
-.content{
-    position: absolute;
-    width: calc(100% - 260px);
-    left: 260px;
-    min-height: 100vh;
-    transition: 0.5s ease;
-    background: var(--background);
-}
-
-.content.active{
-    width: calc(100% - 60px);
-    left: 60px;
-}
-.side-navbar.active{
-    width: 60px;
-}
-.home {
-    padding-left: 5%;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    background: var(--color-background);
-    gap: 1rem;
-}
-
-.home-text {
-    flex: 1 1 17rem;
-}
-.home-img {
-    flex: 1 1 75rem;
-}
+   main{
+    color: var(--text);/*cor dos textos no main*/
+  }
+     /*--------------------------------------------SIDE-NAVBAR--------------------------------------------*/
+     .main{
+      width: 100%;
+      background-color: var(--bars);
+   }
+   .side-navbar{
+      position: fixed;
+      height: 100vh;
+      width: 260px;
+      background: var(--bars);
+      overflow: hidden;
+      transition: 0.5s ease;
+      z-index: 0;
+  }
+  .side-navbar ul{
+      top: 0;
+      left: 0;
+      width: 100%;
+  }
+  .side-navbar ul li{
+      width: 100%;
+  }
+  .side-navbar ul li:hover{
+      background: var(--hover);
+  }
+  /*Impede hover na img e no LG*/
+  .side-navbar ul li:first-child{
+      margin-bottom: 1rem;
+      background: none;
+    }
+    /*compacta os textos e formata eles*/
+    .side-navbar ul li a{
+      display: block;
+      width: 100%;
+      display: flex;
+      color: var(--bars-text);
+    }
+    /*separa os itens e aumenta o tamanho deles*/
+    .side-navbar ul li a .icon{
+      min-width: 60px;
+      display: block;
+      font-size: 25px;
+      line-height: 60px;
+      height: 60px0;
+      text-align: center;
+    }
+    /* Muda o tamanho dos textos*/
+  .side-navbar ul li a .text{
+      display: block;
+      padding: 13px 20px;
+      line-height: 30px;
+      height: 60px;
+      white-space: nowrap;
+  }
+  /*Coloca o texto LG no lugar*/
+  .LensGeld{
+      color:var(--bars-text);
+      font-family: 'inv';
+      padding: 20px 10px;
+      line-height: 50px;
+  }
+  .content{
+      position: absolute;
+      width: calc(100% - 260px);
+      left: 260px;
+      min-height: 100vh;
+      transition: 0.5s ease;
+      background: var(--background);
+      padding-bottom: 50px;
+  }
+  .content.active{
+      width: calc(100% - 60px);
+      left: 60px;
+  }
+  .side-navbar.active{
+      width: 60px;
+  }
 /* Estilizando o rodapé */
 .footer {
     background-color: var(--bars);
