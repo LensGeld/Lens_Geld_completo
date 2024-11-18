@@ -213,21 +213,21 @@ function updateChart() {
         return;
     }
 
-      // Verificando se as despesas são maiores que o lucro
-      let backgroundColors;
-      let borderColors;
-   
-      if (s1 > totalMoney) {
-          // Se as despesas forem maiores que o total de dinheiro, o gráfico será todo vermelho
-          backgroundColors = expenseNames.map(() => 'rgba(255, 0, 0, 0.9)'); // cor vermelha para todas as fatias
-          borderColors = expenseNames.map(() => 'rgba(255, 0, 0, 0.9)'); // bordas também vermelhas
-      } else {
-          // Caso contrário, usa a cor vermelha para as despesas e verde para o lucro
-          backgroundColors = [...expenseNames.map(() => 'rgba(255, 100, 100, 0.9)'), 'rgba(100, 255, 126, 0.9)'];
-          borderColors = [...expenseNames.map(() => 'rgba(255, 100, 100, 0.9)'), 'rgba(100, 255, 126, 0.9)'];
-      }
+    // Verificando se as despesas são maiores que o lucro
+    let backgroundColors;
+    let borderColors;
 
-      const chartData = {
+    if (s1 > totalMoney) {
+        // Se as despesas forem maiores que o total de dinheiro, o gráfico será todo vermelho
+        backgroundColors = expenseNames.map(() => 'rgba(255, 0, 0, 0.9)');
+        borderColors = expenseNames.map(() => 'rgba(255, 0, 0, 0.9)');
+    } else {
+        // Caso contrário, usa a cor vermelha para as despesas e verde para o lucro
+        backgroundColors = [...expenseNames.map(() => 'rgba(255, 100, 100, 0.9)'), 'rgba(100, 255, 126, 0.9)'];
+        borderColors = [...expenseNames.map(() => 'rgba(255, 100, 100, 0.9)'), 'rgba(100, 255, 126, 0.9)'];
+    }
+
+    const chartData = {
         labels: [...expenseNames, "Restante"],
         datasets: [{
             label: '',
@@ -237,7 +237,7 @@ function updateChart() {
             borderWidth: 2
         }]
     };
- 
+
     const config = {
         type: 'pie',
         data: chartData,
@@ -254,7 +254,7 @@ function updateChart() {
             }
         },
     };
- 
+
     const chartContainer = document.getElementById('expense-chart').getContext('2d');
     if (window.expenseChart) {
         window.expenseChart.destroy();
@@ -262,3 +262,86 @@ function updateChart() {
     window.expenseChart = new Chart(chartContainer, config);
 }
 
+
+let newsOffset = 0; // Variável para controlar o número de notícias carregadas
+
+async function fetchNews() {
+  const url = 'https://getnews-f6mscryaba-uc.a.run.app'; // URL da API de notícias
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Erro ao buscar notícias');
+    }
+    const data = await response.json();
+    const articles = data.articles; // Ajuste conforme o formato retornado pela nova API
+
+    const newsContainer = document.getElementById('news-container');
+    if (!newsContainer) {
+      console.error('Elemento news-container não encontrado.');
+      return;
+    }
+
+    newsContainer.innerHTML = ''; // Limpa o conteúdo anterior
+    loadMoreNews(articles); // Carrega a primeira parte das notícias
+    setupCarousel(articles); // Configura o carrossel com as notícias
+  } catch (error) {
+    console.error('Erro ao buscar notícias:', error);
+    alert('Ocorreu um erro ao carregar as notícias. Tente novamente mais tarde.');
+  }
+}
+
+function loadMoreNews(articles) {
+  const newsContainer = document.getElementById('news-container');
+  if (!newsContainer) return;
+
+  // Carrega apenas 5 notícias de cada vez
+  const newsToLoad = articles.slice(newsOffset, newsOffset + 5);
+  newsOffset += 5; // Atualiza o offset para a próxima carga de notícias
+
+  newsToLoad.forEach((article) => {
+    const newsItem = document.createElement('div');
+    newsItem.classList.add('news-item');
+
+    const imageUrl = article.urlToImage || 'default-image.jpg';
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = article.title;
+    image.classList.add('news-image');
+
+    newsItem.innerHTML = `
+      <h3>${article.title}</h3>
+      <p>${article.description || 'Descrição não disponível'}</p>
+      <a href="${article.url}" target="_blank">Leia mais</a>
+    `;
+    newsItem.insertBefore(image, newsItem.firstChild);
+
+    newsContainer.appendChild(newsItem);
+  });
+}
+
+// Função de controle do carrossel de notícias
+function setupCarousel(articles) {
+  const newsContainer = document.getElementById('news-container');
+  const scrollAmount = 320; // Quantidade de pixels para a rolagem
+
+  if (!newsContainer) {
+    console.error('Elemento do carrossel não encontrado.');
+    return;
+  }
+
+  newsContainer.addEventListener('scroll', () => {
+    // Verifica se o usuário chegou ao final do carrossel
+    if (newsContainer.scrollLeft + newsContainer.clientWidth >= newsContainer.scrollWidth) {
+      // Carrega mais notícias
+      loadMoreNews(articles);
+    }
+  });
+  
+  // Inicialmente, ao carregar, carrega a primeira página de notícias
+  loadMoreNews(articles);
+}
+
+// Função para carregar as notícias ao carregar a página
+window.onload = function() {
+  fetchNews(); // Chama a função para carregar as notícias
+};

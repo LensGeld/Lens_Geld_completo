@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Investimentos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluindo a biblioteca Chart.js -->
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>Lens Geld</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Indicadores</a></li>
+        <li><a href="#">Ações</a></li>
+        <li><a href="#">Notícias</a></li>
+        <li><a href="#">Educação</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="market-summary">
+      <h2>Resumo do Mercado</h2>
+      <div class="market-stats">
+        <div class="stat">
+          <h3>Ibovespa</h3>
+          <p id="ibovespa">Carregando...</p>
+        </div>
+        <div class="stat">
+          <h3>Dólar</h3>
+          <p id="usd-value">Carregando...</p>
+        </div>
+        <div class="stat">
+          <h3>Petróleo</h3>
+          <p id="oil-price">Carregando...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="top-stocks">
+      <h2>Top Ações</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Ação</th>
+            <th>Variação</th>
+            <th>Preço Atual</th>
+          </tr>
+        </thead>
+        <tbody id="top-stocks-table">
+          <!-- As ações serão inseridas aqui -->
+        </tbody>
+      </table>
+      <a href="#">Ver mais ações</a>
+    </section>
+
+    <section class="charts">
+      <h2>Gráficos de Mercado</h2>
+      <div class="chart-container">
+        <div class="chart">
+          <h3>Ibovespa</h3>
+          <canvas id="ibovespaChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="cryptocurrencies">
+      <h2>Criptomoedas</h2>
+      <div class="crypto-data">
+        <p id="crypto-price">Carregando...</p>
+        <canvas id="cryptoChart"></canvas>
+      </div>
+    </section>
+    
+    <section class="charts">
+      <h2>Gráficos de Mercado</h2>
+      <div class="chart-container">
+        <div class="chart">
+          <h3>Histórico do Dólar</h3>
+          <canvas id="dollarChart"></canvas>
+        </div>
+      </div>
+    </section>
+    
+    <section class="news">
+      <h2>Notícias de Mercado</h2>
+      <div class="news-carousel">
+        <button id="prev-btn" class="nav-btn">&#10094;</button>
+        <div id="news-container"></div>
+        <button id="next-btn" class="nav-btn">&#10095;</button>
+      </div>
+    </section>    
+    
+    <section class="investment-links">
+      <h2>Invista Agora</h2>
+      <p>Escolha uma corretora e comece a investir hoje mesmo.</p>
+      <a href="https://www.corretora1.com" target="_blank" class="button">Corretora 1</a>
+      <a href="https://www.corretora2.com" target="_blank" class="button">Corretora 2</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 InvestApp | Todos os direitos reservados</p>
+  </footer>
+
+  <!-- Corrigido: Script único para o main.js com 'type="module'" -->
+  <script type="module" src="main.js"></script>
+
+  <!-- Removido as duplicações e a configuração correta do Firebase SDK com type="module" -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+
+</body>
+</html>

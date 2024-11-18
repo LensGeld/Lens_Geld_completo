@@ -1,0 +1,256 @@
+@font-face{
+  font-family: "Inv";
+  src: url('/Lens_Geld_completo/public/IA/static/fonts/Inversionz.ttf')
+ }
+
+ @font-face {
+     font-family: 'ArchivoBlack';
+     src: url('/Lens_Geld_completo/public/IA/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+ }
+
+:root {
+  --main: white;
+  --secondary: #1c283e;
+  --background: #efebe7;
+  --button: #1c283e;
+  --hover: #264c68;
+  --text: #1c283e;
+  --shadow: #333;
+  --moon: white;
+  --sun: #ffffff;
+  --menu-text: white;
+  --mensagem-user: #1c283e;
+  --user-text: #f1f1f1;
+  --mensagem-ma: #f1f1f1;
+  --bars: #1c283e;
+  --bars-text: #f1f1f1;
+  --gastos: #e61d1d;
+  --dinheiro:#6B8E23;
+  --dia-dest: #6b8ea7;
+}
+
+.dark-mode{
+  --main: #1c283e ;
+  --secondary: #6b8ea7;
+  --background:#1c283e;
+  --button: #0c182e;
+  --hover: #6b8ea7;
+  --text:white;
+  --shadow: #555555;
+  --moon: #ffffff;
+  --sun: #0b101b;
+  --menu-text: white;
+  --mensagem-user: #f1f1f1;
+  --user-text: #1c283e;
+  --mensagem-ma: #1c283e;
+  --bars: #0b101b;   
+  --bars-text: #f1f1f1; 
+  --gastos: #A50034;
+  --dinheiro:#8BC34A;
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "ArchivoBlack";
+  background-color: var(--background);
+  color: #333;
+}
+
+header {
+  background-color: var(--bars);
+  color: var(--bars-text);
+  padding: 20px;
+  text-align: center;
+}
+
+header .logo h1 {
+  font-size: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.market-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 30%;
+}
+
+.stat h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.top-stocks table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.top-stocks table th, .top-stocks table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+.charts .chart-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.crypto-data {
+  text-align: center;
+}
+
+#cryptoChart, #dollarChart {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+}
+
+
+.charts .chart {
+  width: 48%;
+}
+
+/* Estilo do carrossel de notícias */
+.news-carousel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#news-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  width: 100%;
+}
+
+.news-item {
+  min-width: 300px;
+  max-width: 300px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.news-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+.news-item p {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.news-item a {
+  text-decoration: none;
+  color: #002043;
+}
+.nav-btn {
+  background-color: var(--bars);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
+
+
+.investment-links a {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+

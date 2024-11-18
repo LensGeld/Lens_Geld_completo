@@ -1,0 +1,498 @@
+@font-face{
+    font-family: "Inv";
+    src: url('/Lens_Geld_completo/public/IA/static/fonts/Inversionz.ttf')
+   }
+
+   @font-face {
+       font-family: 'ArchivoBlack';
+       src: url('/Lens_Geld_completo/public/IA/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+   }
+
+:root {
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --button: #1c283e;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --gastos: #e61d1d;
+    --dinheiro:#6B8E23;
+}
+
+.dark-mode{
+    --main: #1c283e ;
+    --secondary: #6b8ea7;
+    --background:#1c283e;
+    --button: #0c182e;
+    --hover: #6b8ea7;
+    --text:white;
+    --shadow: #555555;
+
+    --moon: #ffffff;
+    --sun: #0b101b;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --gastos: #A50034;
+    --dinheiro:#8BC34A;
+    }
+
+body {
+  font-family: ArchivoBlack;
+}
+
+.graficos-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--text);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para o seletor de ano */
+.seletor-ano {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Espaço de 5px entre o label e o seletor */
+  margin-bottom: 10px;
+}
+
+.seletor-ano select {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid var(--mensagem-ma);
+  background-color: var(--mensagem-user);
+  color: var(--user-text);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Estilo para os botões de alternância de gráfico */
+.botoes-graficos {
+  display: flex;
+  gap: 5px; /* Espaço de 5px entre os botões */
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.botoes-graficos button {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: var(--button);
+  color: var(--menu-text);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+button {
+  background-color: #1c283e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botoes-graficos button:hover {
+  background-color: #14203a;
+}
+
+button:hover {
+  background-color: #ff9800;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+/* Estilos para o Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilo para os botões do modal */
+#lista-anos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#lista-anos button {
+  background-color: #1c283e;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80px;
+}
+
+#lista-anos button:hover {
+  background-color: #3e4b60;
+}
+
+/* Estilos para os gráficos */
+#graficoMensal {
+  width: 80%;
+  margin: 20px auto;
+}
+/* ----------SIDEBAR----------- */
+/* Estilizando o rodapé */
+.footer {
+  background-color: var(--bars);
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para garantir que o conteúdo da página empurre o rodapé para o fundo */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o conteúdo principal tenha altura mínima da tela */
+}
+
+.main-content {
+  flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
+}
+
+/* side navbar*/
+.logo{
+  display: flex;
+  align-items: center;
+}
+.logo img{
+  width: 100px;
+}
+.home-text {
+  flex: 1 1 17rem;
+}
+.home-img {
+  flex: 1 1 75rem;
+}
+.home {
+  padding-left: 5%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--color-background);
+  gap: 1rem;
+}
+
+img{
+  width: 100%;
+  border-radius: 15%;
+ }
+.LensGeld{
+  font-family: "inv";
+  font-size: 70px;
+  font-weight: bolder;
+  color: white;
+}
+.main{
+  width: 100%;
+  background-color: #ececec;
+}
+html{
+  font-size: 14px;
+}
+.side-navbar{
+  width: 250px;
+  height: 100vh;
+  background: var(--bars);
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.side-navbar ul{
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+.side-navbar ul li{
+  display: flex;
+  align-items: center;
+}
+
+.side-navbar ul li:hover{
+  background: var(--hover);
+}
+
+.side-navbar ul li:first-child{ /*impede o hover no lg*/
+margin-bottom: 1rem;
+background: none;
+}
+
+.side-navbar ul li a{   
+display: block;
+width: 100%;
+display: flex;
+color: var(--bars-text);
+}
+
+.side-navbar ul li a .icon{
+min-width: 60px;
+display: block;
+font-size: 20px;
+line-height: 60px;
+height: 60px0;
+text-align: center;
+text-decoration: none;
+}
+.side-navbar ul li a .text{
+  display: block;
+  padding: 13px 20px;
+  line-height: 30px;
+  height: 60px;
+  white-space: nowrap;
+}
+.text .LensGeld{
+  padding: 20px 10px;
+  line-height: 50px;
+  
+}
+.content{
+  flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: calc(100% - 250px);
+  left: 250px;
+  min-height: 100vh;
+  transition: 0.5s ease;
+  background: var(--background);
+}
+
+*::selection{
+  color: #ffffff;
+  background: #6b8ea7;
+}
+
+/*TOP-NAVBAR*/
+
+.title-container {
+  display: flex; /* Usar flexbox para alinhar os textos */
+  align-items: center; /* Alinhar verticalmente ao centro */
+  gap: 10px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+  color: var(--bars-text)
+}
+
+#LG{
+  font-family: "inv";
+  align-self: center;
+  margin-bottom: -2%;
+}
+
+.top-navbar{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: var(--bars);
+  margin-bottom: 20px;
+  gap: 15px;
+  justify-content: center;
+  gap: 10%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+/* Ícone do menu */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/*perfil config2*/
+.btn-menu {
+  width: 56px;
+  height: 56px;
+  float: right;
+  background:'bx bxs-user';
+  background-position: center;
+  text-align: center;
+  border-radius: 56px;
+  cursor: pointer;
+}
+
+.bx-menu:before {
+  content: "\eb5f";
+}
+
+.menu {
+  align-content: auto;
+  display:none;
+  padding-right: 10px;
+  width: 25%;
+  height: 25%;
+  position: fixed;
+  text-align: center;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  margin-top: 55px;
+  right: 0;
+  box-shadow: #333;
+  justify-content: flex-start;
+}
+
+.menu.show {
+  display: block;
+}
+
+.out{
+  display: flex; /* Usar flexbox para alinhar os textos */
+  align-items: center; /* Alinhar verticalmente ao centro */
+  gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.conf{
+  display: flex; /* Usar flexbox para alinhar os textos */
+  align-items: center; /* Alinhar verticalmente ao centro */
+  gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.edit{
+  display: flex; /* Usar flexbox para alinhar os textos */
+  align-items: center; /* Alinhar verticalmente ao centro */
+  gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.menu ul, #mode-toggle {
+  width: 100%; 
+  float: right; 
+  text-align: left;
+}
+
+.menu li a, #mode-toggle {
+  font-size: 1.3em;
+  padding: 1.5% 3%;
+  color: var(--menu-text);
+}
+.menu li a:hover{
+  color: var(--hover);
+  font-size: 1.4em;
+}
+
+.btn-closed{
+  font-size: 1.5em;
+  color: white;
+  float: right; cursor: pointer;
+  margin: 2% 10% 0 0;
+}
+
+.profileicon{
+  padding-left: 10px;
+  color: var(--menu-text);
+}
+
+/* Estilo para o botão de menu */
+#menu-icon {
+  font-size: 34px; /* Tamanho do ícone de menu */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  color: var(--bars-text);
+}
+
+.content.active{
+  width: calc(100% - 60px);
+  left: 60px;
+}
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  .side-navbar {
+      width: 60px; /* Largura reduzida em telas pequenas */
+  }
+  .side-navbar .text {
+      display: none; /* Esconde o texto em telas pequenas */
+  }
+  .side-navbar.active {
+      width: 60px; /* Largura ativa em modo de compactação */
+  }
+  .side-navbar.active .text {
+      display: none; /* Esconde texto em modo ativo */
+  }
+}

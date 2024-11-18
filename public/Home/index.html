@@ -44,6 +44,17 @@
                 <span class="icon"><i class='bx bx-cog'></i></span>
                 <span class="text"><h2>Configurações</h2></span>
             </a></li>
+
+           
+            <li><a href="/Lens_Geld_completo/public/Ensino/index.html">
+                <span class="icon"><i class='bx bxs-graduation'></i></span>
+                <span class="text"><h2>Estudos</h2></span>
+            </a></li>
+
+            <li><a href="/Lens_Geld_completo/public/Gastos/index.html">
+                <span class="icon"><i class='bx bxs-graduation'></i></span>
+                <span class="text"><h2>Analise de Gastos</h2></span>
+            </a></li>
         </ul>
     </div>
 
@@ -192,145 +203,122 @@
 
 
         <!-------DASHBOARD----->
-    <main>
+        <main>
         <h1>Visão Geral</h1>
-        <div class="insights">
-            <!-------RECEITA----->
-            <div class="receita">
-                <span class="material-symbols-outlined">analytics</span>
-                <div class="middle">
-                    <div class="left">
-                        <h3>Receita Mensal</h3>
-                        <label for="total-money" class="money">R$</label>
-                        <input type="number" id="total-money" class="money" placeholder="Total"><br>
-                        <button class="btn-confirmar" onclick="updateChart()">Confirmar</button>
+            <div class="insights">
+                <!-------RECEITA----->
+                <div class="receita">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Receita Mensal</h3>
+                            <label for="total-money" class="money">R$</label>
+                            <input type="number" id="total-money" class="money" placeholder="Total"><br>
+                            <button class="btn-confirmar" onclick="updateChart()">Confirmar</button>
+                        </div>
+                    </div>
+                    <small class="text-muted">Este mês</small>
+                </div>
+        <!-------DESPESAS----->
+        <div class="expenses">
+            <span class="material-symbols-outlined">trending_down</span>
+            <div class="middle">
+                <div class="left">
+                    <h3>Despesas Mensais</h3>
+                    <label class="money">R$</label>
+                    <h1 id="expenses">00</h1>
                 </div>
             </div>
             <small class="text-muted">Este mês</small>
         </div>
-    <!-------DESPESAS----->
-    <div class="expenses">
-        <span class="material-symbols-outlined">trending_down</span>
-        <div class="middle">
-            <div class="left">
-                <h3>Despesas Mensais</h3>
-                <label class="money">R$</label>
-                <h1 id="expenses">00</h1>
-        </div>
-    </div>
-    <small class="text-muted">Este mês</small>
-    </div>
-    <!-------LUCRO----->
-    <div class="income">
-        <span class="material-symbols-outlined">monitoring</span>
-        <div class="middle">
-            <div class="left">
-                <h3>Dinheiro Restante</h3>
-                <label class="money">R$</label>
-                <h1 id="lucro">00</h1>
-        </div>
-    </div>
-    <small class="text-muted">Este mês</small>
-    
-    </div>
-
-        <!------TABELA GASTOS------->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-        <div class="recent-expenses">
-            <h2>Gastos Recentes</h2>
-            <h3>Adcione os seus gastos do mês:</h3>
-        <input type="text" class="gastosname" id="product-name" placeholder="Nome"><br>
-
-        <label for="product-price">R$</label>
-        <input type="number" class="gastosvalor" id="product-price" placeholder="Valor">
-        <button class="btn-confirmar" onclick="addExpense()">Adcionar</button>
-
-            <table id="expenses-table">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Valor</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td>R$0,00</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-------LUCRO----->
+        <div class="income">
+            <span class="material-symbols-outlined">monitoring</span>
+            <div class="middle">
+                <div class="left">
+                    <h3>Dinheiro Restante</h3>
+                    <label class="money">R$</label>
+                    <h1 id="lucro">00</h1>
+                </div>
+            </div>
+            <small class="text-muted">Este mês</small>
         </div>
 
-      <!-- Botão "Gastos pré-definidos" para abrir o pop-up -->
-<button id="btn-gastos" class="btn-gastos">Gastos pré-definidos</button>
+            <!------TABELA GASTOS------->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Pop-up de Gastos Pré-definidos -->
-<div id="pop-up-gastos" class="pop-up hidden">
-    <div class="pop-up-content">
-        <div class="search-container">
-            <input type="text" id="search-gastos" placeholder="Pesquisar gastos...">
-            <button id="search-btn">🔍</button>
-        </div>
-        <div class="gastos-list">
-            <button class="gasto-item" style="background-color: #FF5733">Aluguel</button>
-            <button class="gasto-item" style="background-color: #C70039">Conta de luz</button>
-            <button class="gasto-item" style="background-color: #900C3F">Mercado</button>
-            <button class="gasto-item" style="background-color: #581845">Internet</button>
+            <div class="recent-expenses">
+                <h2>Gastos Recentes</h2>
+                <h3>Adicione os seus gastos do mês:</h3>
+                <input type="text" class="gastosname" id="product-name" placeholder="Nome"><br>
             
-        <!-- Lista de despesas pré-definidas 
-        <div id="predefinedExpenseList"> -->
-
-            <!-- Aqui serão adicionados os botões dos gastos pré-definidos -->
-        </div>
-        
-        <!-- Formulário para adicionar um novo gasto -->
-        <h3>Adicionar Novo Gasto</h3>
-        <input type="text" id="novo-gasto-nome" placeholder="Nome do gasto">
-        <input type="number" id="novo-gasto-valor" placeholder="Valor do gasto">
-        <input type="color" id="novo-gasto-cor">
-        <button id="btn-salvar">Salvar</button>
-        <button id="btn-salvar-recorrente">Salvar Gasto Recorrente</button>
-        <button class="close-btn" id="close-pop-up">X</button>
-    </div>
-</div>
-
-<!-- Pop-up para Adicionar Valor -->
-<div id="pop-up-valor" class="pop-up hidden">
-    <div class="pop-up-content">
-        <h1>Adicione o Valor</h1>
-        <input type="number" id="valor-gasto" placeholder="Valor do gasto">
-        <button id="btn-adicionar">Adicionar Gasto</button>
-        <input type="color" id="cor-gasto">
-        <button id="btn-mudar-cor">Mudar Cor</button>
-        <button class="close-btn" id="close-pop-up-valor">X</button>
-    </div>
-</div>
-
-    <!-- Tela para selecionar recorrência -->
-    <div id="recurrenceOptions" style="display: none;">
-      <label for="recurrenceType">Tipo de recorrência:</label>
-      <select id="recurrenceType">
-        <option value="daily">Diário</option>
-        <option value="weekly">Semanal</option>
-        <option value="monthly">Mensal</option>
-        <option value="yearly">Anual</option>
-      </select>
-      <label for="recurrenceDay">Dia de cobrança:</label>
-      <input type="number" id="recurrenceDay" placeholder="Dia do mês">
-      <button id="confirmRecurrence">Confirmar</button>
-    </div>
-  </div>
-</div>
-<!-- fim do po-up -->
-
-       
-        
+                <label for="product-price">R$</label>
+                <input type="number" class="gastosvalor" id="product-price" placeholder="Valor">
+                <button class="btn-confirmar" onclick="addExpense()">Adicionar</button>
+            
+                <table id="expenses-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td>R$0,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        <!-- Container do gráfico -->
         <div id="chart-container">
             <canvas id="expense-chart"></canvas>
         </div>
+        <!-- Botão "Gastos pré-definidos" para abrir o pop-up -->
+        <button id="btn-gastos" class="btn-gastos">Gastos pré-definidos</button>
         
+        <!-- Pop-up de Gastos Pré-definidos -->
+        <div id="pop-up-gastos" class="pop-up hidden">
+            <div class="pop-up-content">
+                <div class="search-container">
+                    <input type="text" id="search-gastos" placeholder="Pesquisar gastos...">
+                    <button id="search-btn">🔍</button>
+                </div>
+                <div class="gastos-list">
+                    <button class="gasto-item" style="background-color: #FF5733">Aluguel</button>
+                    <button class="gasto-item" style="background-color: #C70039">Conta de luz</button>
+                    <button class="gasto-item" style="background-color: #900C3F">Mercado</button>
+                    <button class="gasto-item" style="background-color: #581845">Internet</button>
+                </div>
+                <h3>Adicionar Novo Gasto</h3>
+                <input type="text" id="novo-gasto-nome" placeholder="Nome do gasto">
+                <input type="number" id="novo-gasto-valor" placeholder="Valor do gasto">
+                <input type="color" id="novo-gasto-cor">
+                <button id="btn-salvar">Salvar</button>
+                <button id="btn-salvar-recorrente">Salvar Gasto Recorrente</button>
+                <button class="close-btn" id="close-pop-up">X</button>
+            </div>
+        </div>
+        
+        <!-- Pop-up para Adicionar Valor -->
+        <div id="pop-up-valor" class="pop-up hidden">
+            <div class="pop-up-content">
+                <h1>Adicione o Valor</h1>
+                <input type="number" id="valor-gasto" placeholder="Valor do gasto">
+                <button id="btn-adicionar">Adicionar Gasto</button>
+                <input type="color" id="cor-gasto">
+                <button id="btn-mudar-cor">Mudar Cor</button>
+                <button class="close-btn" id="close-pop-up-valor">X</button>
+            </div>
+        </div>
+        <!-- Seção de Notícias -->
+<div class="news-section">
+    <h2>Últimas Notícias</h2>
+    <div id="news-container" class="news-container">
+        <!-- As notícias serão carregadas aqui via JavaScript -->
+
     </main>
 </div>
 

@@ -31,19 +31,37 @@ div {
 }
 
 h1, h2, h3, p {
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Archivo Black';
 }
 
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    width: 100px;
+}
+.home-text {
+    flex: 1 1 17rem;
+}
+.home-img {
+    flex: 1 1 75rem;
+}
+.home {
+    padding-left: 5%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--color-background);
+    gap: 1rem;
+}
 
 img{
     width: 100%;
     border-radius: 15%;
-    overflow-clip-margin: content-box;
-    overflow: clip;
    }
-
-
-
 .LensGeld{
     font-family: "inv";
     font-size: 70px;
@@ -343,13 +361,6 @@ input[type="radio"] {
 }
 
 /*TOP-NAVBAR*/
-
-.icon-switch-container {
-    display: flex; /* Usar flexbox para alinhar os itens */
-    align-items: center; /* Alinhar verticalmente ao centro */
-    gap: 5%; /* Espaçamento entre os itens (ajuste conforme necessário) */
-}
-
 .title-container {
     display: flex; /* Usar flexbox para alinhar os textos */
     align-items: center; /* Alinhar verticalmente ao centro */
@@ -663,3 +674,43 @@ input:checked ~ .sun-icon {
         display: none; /* Esconde texto em modo ativo */
     }
 }
+/* Estilizando o rodapé */
+.footer {
+    background-color: var(--bars);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Estilos para garantir que o conteúdo da página empurre o rodapé para o fundo */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o conteúdo principal tenha altura mínima da tela */
+  }
+  
+  .main-content {
+    flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
+  }

@@ -24,7 +24,28 @@
     "public": "public",
     "cleanUrls": true,
     "trailingSlash": false,
-    "rewrites": []
+    "rewrites": [
+      {
+        "source": "/api/stockdata/**",
+        "function": "getStockData"
+      },
+      {
+        "source": "/api/cryptodata/**",
+        "function": "getCryptoData"
+      },
+      {
+        "source": "/api/news/**",
+        "function": "getNews"
+      },
+      {
+        "source": "/api/exchangerate/**",
+        "function": "getExchangeRate"
+      },
+      {
+        "source": "/api/ibovespa/**",
+        "function": "getIbovespaData"
+      }
+    ]
   },
   "storage": {
     "rules": "storage.rules"

@@ -63,7 +63,7 @@ def obter_dados_financeiros(symbol="AAPL"):
         'function': 'TIME_SERIES_INTRADAY',
         'symbol': symbol,
         'interval': '5min',
-        'apikey': ALPHA_VANTAGE_API_KEY
+        'apikey': NGRUWF14PTDEDXRK
     }
     
     resposta = requests.get(url, params=params)

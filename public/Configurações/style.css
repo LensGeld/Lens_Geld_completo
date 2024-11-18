@@ -164,7 +164,6 @@ input[type="color"] {
     min-height: 100vh;
     transition: 0.5s ease;
     background: var(--background);
-    padding: 20px;
     width: calc(100% - 260px); /* Garantir que o conteúdo ocupe o restante da tela */
 }
 

@@ -1,11 +1,18 @@
 @font-face {
-    font-family: 'ArchivoBlack';
-    src: url('/IA/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+    font-family: 'Archivo Black';
+    src: url('/Lens_Geld_completo/public/IA/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Inv';
-    src: url('/IA/static/fonts/Inversionz.ttf') format('truetype');
+    src: url('/Lens_Geld_completo/public/IA/static/fonts/Inversionz.ttf') format('truetype');
+}
+
+.LensGeld{
+    font-family: 'Inversionz';
+    font-size: 70px;
+    font-weight: bolder;
+    color: #eeeded;
 }
 
 body {
@@ -307,20 +314,25 @@ button:hover {
 .icon-switch-container {
     display: flex; /* Usar flexbox para alinhar os itens */
     align-items: center; /* Alinhar verticalmente ao centro */
-    gap: 5%; /* Espaçamento entre os itens (ajuste conforme necessário) */
+    gap: 3%; /* Espaçamento entre os itens (ajuste conforme necessário) */
 }
 
 .title-container {
     display: flex; /* Usar flexbox para alinhar os textos */
+    justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Alinhar verticalmente ao centro */
-    gap: 10px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+    flex: 1; /* Ocupa o espaço restante */
     color: var(--bars-text)
 }
 
 #LG{
+    align-items: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    font-size: 50px;
     font-family: "inv";
     align-self: center;
     margin-bottom: -2%;
+
 }
 
 .top-navbar{
@@ -334,20 +346,25 @@ button:hover {
     z-index: 1;
     background-color: var(--bars);
     margin-bottom: 20px;
-    gap: 15px;
-    justify-content: center;
+    gap: 10px;
+    justify-content: space-between; /* Ajusta para que os itens se alinhem nas extremidades */
     gap: 10%;
     box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 /* Ícone do menu */
 .menu-icon {
+    order: -1; /* Move o menu para o início da barra */
+    margin-right: auto; /* Empurra o ícone do menu para a esquerda */
     font-size: 28px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 /*perfil config2*/
 .btn-menu {
+    margin-right: 50px; /* Move um pouco para a esquerda */
     width: 56px;
     height: 56px;
     float: right;
@@ -441,7 +458,21 @@ button:hover {
 }
 
 /* ----------SIDEBAR----------- */
+
 /* side navbar*/
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo img{
+    width: 100px;
+}
+img{
+    width: 100%;
+    border-radius: 15%;
+   }
+
 .main{
     width: 100%;
     background-color: var(--text);
@@ -487,7 +518,7 @@ button:hover {
   display: block;
   font-size: 25px;
   line-height: 60px;
-  height: 60px0;
+  height: 60px;
   text-align: center;
 }
 .side-navbar ul li a .text{
@@ -519,4 +550,61 @@ button:hover {
 }
 .side-navbar.active{
     width: 60px;
+}
+.home {
+    padding-left: 5%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--color-background);
+    gap: 1rem;
+}
+
+.home-text {
+    flex: 1 1 17rem;
+}
+.home-img {
+    flex: 1 1 75rem;
+}
+/* Estilizando o rodapé */
+.footer {
+    background-color: var(--bars);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para garantir que o conteúdo da página empurre o rodapé para o fundo */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o conteúdo principal tenha altura mínima da tela */
+}
+
+.main-content {
+    flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
 }
