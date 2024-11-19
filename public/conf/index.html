@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurações - Lens Geld</title>
+    <link rel="stylesheet" href="/lens-geld/public/conf/style.css">
+</head>
+<body>
+
+<!-- sidebar -->
+<div class="main">
+    <div class="side-navbar">
+        <ul>
+            <li><a href="#">
+                <span class="text"><h1 class="LensGeld">lENS<br>gELD</h1></span>
+            </a></li>
+            <li><a href="#geral">
+                <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                <span class="text"><h2>Geral</h2></span>
+            </a></li>
+            <li><a href="#not">
+                <span class="icon"><i class='bx bxs-bell'></i></span>
+                <span class="text"><h2>Notificações</h2></span>
+            </a></li>
+            <li><a href="#confg">
+                <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                <span class="text"><h2>Configurações<br>de Investimento</h2></span>
+            </a></li>
+            <li><a href="#Gasto">
+                <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                <span class="text"><h2>Gastos<br>e planejamento</h2></span>
+            </a></li>
+            <li><a href="#Seg">
+                <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                <span class="text"><h2>Segurança</h2></span>
+            </a></li>
+            <li><a href="/lens-geld/public/home/index.html">
+                <span class="icon"><i class='bx bxs-home-alt-2'></i></span>
+                <span class="text"><h2>Home</h2></span>
+            </a></li>
+        </ul>
+    </div>
+
+
+<!-- TOP NAVBAR -->
+<div class="content">
+    <div class="top-navbar">
+        <span class="menu-icon" id="menu-icon"><i class='bx bx-menu'></i></span>
+        <div class="title-container">
+            <h1 id="LG">lENS gELD</h1>
+            <h1>Configurações</h1>
+        </div>
+    </div>
+
+    <!-- Conteúdo das configurações -->
+    <div class="config-container">
+        <!-- Geral -->
+        <section class="config-section">
+            <h2 id="geral">Geral</h2>
+            <label>
+                Modo Claro/Escuro
+                <div class="switch">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider round"></span>
+                </div>
+            </label>    
+        </section>
+
+        <!-- Notificações -->
+        <section class="config-section">
+            <h2 id="not">Notificações</h2>
+            <label>
+                Ativar Notificações
+                <input type="checkbox" id="notifications-toggle" />
+            </label>
+            <label>
+                Notificações de Gastos
+                <select id="spending-alerts">
+                    <option value="daily">Diárias</option>
+                    <option value="weekly">Semanais</option>
+                    <option value="monthly">Mensais</option>
+                </select>
+            </label>
+        </section>
+
+        <!-- Perfil do Usuário -->
+        <section class="config-section">
+            <h2>Perfil do Usuário</h2>
+            <label>
+                Alterar perfil de usuário
+                <button id="perfil-btn" onclick="window.location.href='/lens-geld/public/Página_de_usuário/index.html'">Aqui</button>
+            </label>
+        </section>
+
+      <!-- Configurações de Investimento -->
+<section class="config-section">
+    <h2 id="confg">Configurações de Investimento</h2>
+    <a href="/lens-geld/public/teste/index.html">Testar Perfil de Investidor</a>
+    
+    <div id="resultado-perfil">
+        <!-- O resultado será exibido aqui -->
+    </div>
+
+    <label>
+        Preferências de Risco
+        <select id="risk-preference">
+            <option value="conservador">Conservador</option>
+            <option value="moderado">Moderado</option>
+            <option value="arrojado">Arrojado</option>
+        </select>
+    </label>
+</section>
+        <!-- Gastos e Planejamento Financeiro -->
+        <section class="config-section">
+            <h2 id="Gasto">Gastos e Planejamento</h2>
+            <button id="manage-expenses">Definir Gastos Recorrentes</button>
+            <button id="add-expense-category">Adicionar Categoria de Gasto</button>
+        </section>
+
+        <!-- Segurança -->
+        <section class="config-section">
+            <h2 id="Seg">Segurança</h2>
+            <label>
+                Alterar Senha
+                <input type="password" id="change-password" placeholder="Nova Senha" />
+            </label>
+            <label>
+                Autenticação em Duas Etapas
+                <input type="checkbox" id="two-factor-auth" />
+            </label>
+        </section>
+    </div>
+</div>
+
+<script src="/lens-geld/public/Configurações/script.js"></script>
+<script src="/lens-geld/public/assets/theme.js"></script>
+</body>
+</html>

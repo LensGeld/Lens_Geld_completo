@@ -1,0 +1,337 @@
+@font-face{
+    font-family: "Inv";
+    src: url('/lens-geld/public/assets/fonts/Inversionz.ttf')
+   }
+   
+   @font-face {
+       font-family: "ArchivoBlack";
+       src: url('/lens-geld/public/assets/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+   }
+
+   /* ----------------------------------------------------ROOT-VARIABLES-------------------------------------------------------------------*/
+:root {
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --button: #1c283e;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --gastos: #e61d1d;
+    --dinheiro:#6B8E23;
+}
+.dark-mode{
+    --main: #1c283e ;
+    --secondary: #6b8ea7;
+    --background:#1c283e;
+    --button: #efebe7;
+    --hover: #6b8ea7;
+    --text:white;
+    --shadow: #555555;
+    --moon: #ffffff;
+    --sun: #0b101b;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --gastos: #A50034;
+    --dinheiro:#8BC34A;
+    }
+  /* ----------------------------------------------------BODY-------------------------------------------------------------------*/
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    appearance: none;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'ArchivoBlack';
+   }
+   html{
+    scroll-behavior: smooth;
+    font-size: 14px;
+ }
+  /* Garantir que o gráfico e as seções abaixo não saiam do layout */
+body {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+}
+
+   /* Container geral que contém todas as seções */
+   .container {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima para evitar que o conteúdo ultrapasse a tela */
+    margin: 0 auto; /* Centraliza o conteúdo da página */
+    padding: 20px; /* Adiciona um padding para evitar que o conteúdo grude nas bordas */
+    box-sizing: border-box; /* Garante que o padding seja contado no tamanho total */
+}
+button:hover {
+    background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+    color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+}
+
+section{
+    padding: 50px, 10%;
+}
+*::selection{
+    color: #ffffff;
+    background: #6b8ea7;
+}
+img{
+    width: 100%;
+    border-radius: 15%;
+   }
+   main{
+    color: var(--text);/*cor dos textos no main*/
+}
+   /*--------------------------------------------SIDE-NAVBAR--------------------------------------------*/
+ /*--------------------------------------------SIDE-NAVBAR--------------------------------------------*/
+
+.side-navbar {
+    position: fixed;  /* Barra lateral fixa */
+    height: 100vh;    /* Ocupa 100% da altura da tela */
+    width: 300px;     /* Largura da barra lateral */
+    background: var(--bars);
+    overflow: hidden;
+    transition: 0.5s ease;
+    z-index: 1000;    /* Garantir que a barra lateral fique acima de outros conteúdos */
+    left: 0;          /* Posiciona a barra lateral no lado esquerdo da tela */
+}
+
+.side-navbar ul {
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.side-navbar ul li {
+    width: 100%;
+}
+
+.side-navbar ul li:hover {
+    background: var(--hover);
+}
+
+/* Impede hover na img e no LG */
+.side-navbar ul li:first-child {
+    margin-bottom: 1rem;
+    background: none;
+}
+
+/* Compacta os textos e formata eles */
+.side-navbar ul li a {
+    display: block;
+    width: 100%;
+    display: flex;
+    color: var(--bars-text);
+}
+
+/* Separa os itens e aumenta o tamanho deles */
+.side-navbar ul li a .icon {
+    min-width: 60px;
+    display: block;
+    font-size: 25px;
+    line-height: 60px;
+    height: 60px;
+    text-align: center;
+}
+
+/* Muda o tamanho dos textos */
+.side-navbar ul li a .text {
+    display: block;
+    padding: 13px 20px;
+    line-height: 30px;
+    height: 60px;
+    white-space: nowrap;
+}
+
+/* Coloca o texto LG no lugar */
+.text .LensGeld {
+    font-family: 'inv';
+    padding: 20px 10px;
+    line-height: 50px;
+}
+
+/* Quando a barra lateral está contraída */
+.side-navbar.active {
+    width: 60px; /* Reduz a largura da barra lateral */
+}
+
+/*--------------------------------------------CONTENT--------------------------------------------*/
+
+.content {
+    position: absolute;
+    width: calc(100% - 260px); /* Largura do conteúdo ajustada para 100% menos a largura da barra lateral */
+    left: 260px; /* Posição do conteúdo à direita da barra lateral */
+    min-height: 100vh;
+    transition: 0.5s ease;
+    background: var(--background);
+    padding-bottom: 50px;
+}
+
+/* Ajusta o conteúdo quando a barra lateral está contraída */
+.content.active {
+    width: calc(100% - 60px); /* Ajusta a largura do conteúdo quando a barra lateral estiver contraída */
+    left: 60px; /* Move o conteúdo para a direita */
+}
+
+/*--------------------------------------------TOP-NAVBAR--------------------------------------------*/
+
+.top-navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 20px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    background: var(--bars);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Certifique-se de que a barra superior fique acima de outros conteúdos */
+}
+
+#menu-icon {
+    font-size: 34px;
+    cursor: pointer;
+    color: var(--bars-text);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #233b68;
+    box-shadow: 0 4px 41px rgba(5, 4, 22, 0.9);
+    padding: 15px 10%;
+    transition: 0.2s;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar a {
+    font-size: 1rem;
+    padding: 11px 20px;
+    color: var(--second-color);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.navbar a:hover {
+    color: var(--hover);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+  /*--------------------------------------------tela--------------------------------------------*/
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.investor-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.investor-card:hover {
+    transform: translateY(-10px);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #666;
+    margin: 15px 0 10px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+.resources {
+    margin-top: 15px;
+}
+
+.resources h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.resources a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #4CAF50;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.resources a:hover {
+    color: #333;
+}
+
+/* Colors for each investor type */
+.conservador {
+    border-top: 5px solid #4CAF50;
+}
+
+.moderado {
+    border-top: 5px solid #FFC107;
+}
+
+.arrojado {
+    border-top: 5px solid #FF5722;
+}
+
+.agressivo {
+    border-top: 5px solid #9C27B0;
+}

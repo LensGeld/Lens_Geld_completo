@@ -1,0 +1,599 @@
+@font-face {
+    font-family: 'Archivo Black';
+    src: url('/Lens_Geld_completo/public/assets/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Inv';
+    src: url('/Lens_Geld_completo/public/assets/fonts/Inversionz.ttf') format('truetype');
+}
+body {
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    font-family: 'Archivo Black';
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha os itens ao centro */
+    min-height: 100vh; /* Garante que o conteúdo empurre o rodapé para o fundo */
+}
+
+:root {
+    --main: white;
+    --secondary: #1c283e;
+    --background: #efebe7;
+    --hover: #264c68;
+    --text: #1c283e;
+    --shadow: #333;
+    --moon: white;
+    --sun: #ffffff;
+    --menu-text: white;
+    --mensagem-user: #1c283e;
+    --user-text: #f1f1f1;
+    --mensagem-ma: #f1f1f1;
+    --bars: #1c283e;
+    --bars-text: #f1f1f1;
+    --button: #1c283e;
+    --modal-background: #fefefe;
+    --modal-border: #888;
+    --question: #eef4ff;
+}
+.dark-mode {
+    --main: #1c283e;
+    --secondary: #6b8ea7;
+    --background: #1c283e;
+    --text: white;
+    --shadow: #555555;
+    --moon: #1c283e;
+    --sun: white;
+    --menu-text: white;
+    --mensagem-user: #f1f1f1;
+    --user-text: #1c283e;
+    --mensagem-ma: #1c283e;
+    --bars: #0b101b;   
+    --bars-text: #f1f1f1; 
+    --button: #efebe7;
+    --modal-background: #333333;
+    --modal-border: #666666;
+    --question: #27354e;
+}
+
+
+h2 {
+    text-align: center;
+    color: var(--secondary);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Contêiner da pergunta */
+.question {
+    margin: 20px 0;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Estilo do contêiner da pergunta quando o mouse passa por cima */
+.question:hover {
+    background-color: var(--question);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* Contêiner das opções */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilos para cada opção */
+.option-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Estilo do input de radio */
+.option-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    left: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.option-container input:checked ~ .checkmark {
+    background-color: #1c283e;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 8px;
+}
+.option-container input:checked ~ .checkmark:after {
+    display: block;
+}
+.checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+/* Estilo do texto */
+.option-label {
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+/* Animação de hover nas opções */
+.option-container:hover {
+    transform: scale(1.05);  /* Aumenta um pouco o tamanho da opção */
+    border-color: var(--button);  /* Muda a cor da borda */
+    background-color: var(--bars-text);  /* Muda a cor do fundo */
+}
+
+
+
+/* ---------------------------------BARRA-DE-PROGRESSO---------------------------------*/
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--bars);
+    width: 0%; /* Inicialmente a barra está vazia */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* ---------------------------------BOTÕES---------------------------------*/
+
+button {
+    background-color: var(--button);
+    color: var(--user-text);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: var(--hover);
+}
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between; /* Botões nas extremidades */
+    align-items: center; /* Centraliza verticalmente */
+    margin-top: 20px; /* Espaço superior */
+}
+
+/* Botão centralizado */
+button[type="submit"] {
+    margin: 0 auto; /* Centraliza horizontalmente */
+    display: block; /* Garante alinhamento consistente */
+}
+/* Estilo dos botões de navegação */
+.nav-btn {
+    background-color: var(--button);
+    color: var(--user-text);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+.nav-btn:disabled {
+    background-color: #ccc; /* Cor mais clara para indicar desativação */
+    cursor: not-allowed; /* Mostra que o botão está desabilitado */
+}
+.nav-btn:hover:not(:disabled) {
+    background-color: var(--hover);
+}
+
+/* ---------------------------------RESULTADO---------------------------------*/
+.result {
+    display: none;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text);
+    text-align: center;
+}
+
+.investments {
+    margin-top: 20px;
+    display: none;
+}
+.investments ul {
+    list-style-type: none;
+    padding: 0;
+}
+.investments li {
+    margin: 8px 0;
+    font-size: 16px;
+}
+.investments a {
+    color: var(--button);
+    text-decoration: none;
+    font-weight: bold;
+}
+.investments a:hover {
+    text-decoration: underline;
+    color: var(--hover);
+}
+
+
+/* Modal de Resultado */
+modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; /* Sobrepõe o restante da interface */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.modal-content {
+    background-color: var(--modal-background);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--modal-border);
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    color: var(--text);
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--hover);
+}
+
+/*TOP-NAVBAR*/
+
+.icon-switch-container {
+    display: flex; /* Usar flexbox para alinhar os itens */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 3%; /* Espaçamento entre os itens (ajuste conforme necessário) */
+}
+
+.title-container {
+    display: flex; /* Usar flexbox para alinhar os textos */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    flex: 1; /* Ocupa o espaço restante */
+    color: var(--bars-text)
+}
+
+#LG{
+    align-items: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    font-size: 50px;
+    font-family: "inv";
+    align-self: center;
+    margin-bottom: -2%;
+
+}
+
+.top-navbar{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 7px 20px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--bars);
+    margin-bottom: 20px;
+    gap: 10px;
+    justify-content: space-between; /* Ajusta para que os itens se alinhem nas extremidades */
+    gap: 10%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+/* Ícone do menu */
+.menu-icon {
+    order: -1; /* Move o menu para o início da barra */
+    margin-right: auto; /* Empurra o ícone do menu para a esquerda */
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/*-----------------------------------------------PERFIL-----------------------------------------------*/
+.btn-menu {
+    margin-right: 50px; /* Move um pouco para a esquerda */
+    width: 56px;
+    height: 56px;
+    float: right;
+    text-align: center;
+    border-radius: 56px;
+    cursor: pointer;
+    overflow: hidden; /* Garante que a imagem do avatar fique dentro do botão */
+    border: none; /* Remover borda */
+    padding: 0; /* Remover padding */
+}
+.btn-menu img {
+    width: 100%; /* Faz a imagem ocupar todo o botão */
+    height: 100%; /* Garante que a imagem ocupe a altura do botão */
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço, cortando se necessário */
+}
+
+/* Se você ainda deseja exibir o ícone de menu (para o caso de não ter a foto do usuário), pode deixá-lo assim */
+.bx-menu:before {
+    content: "\eb5f";
+}
+
+.menu {
+    align-content: auto;
+    display: none;
+    padding-right: 10px;
+    width: 25%;
+    height: 25%;
+    position: fixed;
+    text-align: center;
+    background-color: var(--bars-text);
+    border-radius: 10px;
+    margin-top: 55px;
+    right: 0;
+    box-shadow: #333;
+    justify-content: flex-start;
+}
+
+.menu.show {
+    display: block;
+}
+
+.out{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.conf{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.edit{
+    display: flex; /* Usar flexbox para alinhar os textos */
+    align-items: center; /* Alinhar verticalmente ao centro */
+    gap: 2px; /* Espaçamento entre os textos (ajuste conforme necessário) */
+}
+
+.menu ul, #mode-toggle {
+    width: 100%; 
+    float: right; 
+    text-align: left;
+}
+
+.menu li a, #mode-toggle {
+    font-size: 1.3em;
+    padding: 1.5% 3%;
+    color: var(--menu-text);
+}
+.menu li a:hover{
+    color: var(--hover);
+    font-size: 1.4em;
+}
+
+.btn-closed {
+    font-size: 1.5em;
+    color: #1c283e;
+    float: right;
+    cursor: pointer;
+    margin: 2% 10% 0 0;
+}
+
+.profileicon {
+    padding-left: 10px;
+    color: var(--menu-text);
+}
+/* Estilo para o botão de menu */
+#menu-icon {
+    font-size: 34px; /* Tamanho do ícone de menu */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    color: var(--bars-text);
+}
+
+.content.active{
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+ /* ----------------------------------------------------BODY-------------------------------------------------------------------*/
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    appearance: none;
+    text-decoration: none;
+    list-style: none;
+   }
+   html{
+    font-size: 14px;
+  }
+
+  
+/* Container geral que contém todas as seções */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Limita a largura máxima para evitar que o conteúdo ultrapasse a tela */
+    margin: 50px auto; /* Centraliza o conteúdo e adiciona um espaço acima */
+    padding: 20px; /* Adiciona um padding para evitar que o conteúdo grude nas bordas */
+    box-sizing: border-box; /* Garante que o padding seja contado no tamanho total */
+    background-color: var(--main); /* Cor de fundo do container */
+    border-radius: 8px; /* Arredonda os cantos */
+    box-shadow: 0px 4px 15px var(--shadow); /* Adiciona uma sombra ao redor */
+    /* Mantém a largura do container centralizado dentro de uma largura máxima de 1200px */
+}
+
+  button:hover {
+    background-color: var(--hover); /* Cor de fundo do botão ao passar o mouse */
+    color: var(--moon); /* Cor do texto do botão ao passar o mouse */
+  }
+  
+  section{
+    padding: 50px, 10%;
+  }
+  img{
+    width: 100%;
+    border-radius: 15%;
+   }
+   main{
+    color: var(--text);/*cor dos textos no main*/
+  }
+     /*--------------------------------------------SIDE-NAVBAR--------------------------------------------*/
+     .main{
+      width: 100%;
+      background-color: var(--bars);
+   }
+   .side-navbar{
+      position: fixed;
+      height: 100vh;
+      width: 260px;
+      background: var(--bars);
+      overflow: hidden;
+      transition: 0.5s ease;
+      z-index: 0;
+  }
+  .side-navbar ul{
+      top: 0;
+      left: 0;
+      width: 100%;
+  }
+  .side-navbar ul li{
+      width: 100%;
+  }
+  .side-navbar ul li:hover{
+      background: var(--hover);
+  }
+  /*Impede hover na img e no LG*/
+  .side-navbar ul li:first-child{
+      margin-bottom: 1rem;
+      background: none;
+    }
+    /*compacta os textos e formata eles*/
+    .side-navbar ul li a{
+      display: block;
+      width: 100%;
+      display: flex;
+      color: var(--bars-text);
+    }
+    /*separa os itens e aumenta o tamanho deles*/
+    .side-navbar ul li a .icon{
+      min-width: 60px;
+      display: block;
+      font-size: 25px;
+      line-height: 60px;
+      text-align: center;
+    }
+    /* Muda o tamanho dos textos*/
+  .side-navbar ul li a .text{
+      display: block;
+      padding: 13px 20px;
+      line-height: 30px;
+      height: 60px;
+      white-space: nowrap;
+  }
+  /*Coloca o texto LG no lugar*/
+  .LensGeld{
+      color:var(--bars-text);
+      font-family: 'inv';
+      padding: 20px 10px;
+      line-height: 50px;
+  }
+  .content{
+      position: absolute;
+      width: calc(100% - 260px);
+      left: 260px;
+      min-height: 100vh;
+      transition: 0.5s ease;
+      background: var(--background);
+      padding-bottom: 50px;
+  }
+  .side-navbar.active{
+      width: 60px;
+  }
+/* Estilizando o rodapé */
+.footer {
+    background-color: var(--bars);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;  /* Garantir que o rodapé fique abaixo do conteúdo principal */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+.main-content {
+    flex-grow: 1; /* Isso permite que o conteúdo ocupe o espaço disponível e empurre o rodapé para baixo */
+}

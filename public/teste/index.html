@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Perfil de Investidor</title>
+    <link rel="stylesheet" href="/Lens_Geld_completo/public/Teste de perfil/Style.css">
+    <link rel="icon" href="/Lens_Geld_completo/public/assets/img/logo.jpeg" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <!-- Barra lateral de navegação -->
+        <div class="main">
+            <div class="side-navbar">
+                <ul>
+                    <li><a href="#">
+                        <span class="icon"><img src="/Lens_Geld_completo/public/assets/img/logo.jpeg"></span>
+                        <span class="text"><h1 class="LensGeld">l<br>g</h1></span>
+                    </a></li>
+    
+                    <li><a href="/Lens_Geld_completo/public/Home/index.html">
+                        <span class="icon"><i class='bx bxs-home-alt-2'></i></span>
+                        <span class="text"><h2>Home</h2></span>
+                    </a></li>
+    
+                    <li><a href="/Lens_Geld_completo/public/IA/templates/index.html">
+                        <span class="icon"><i class='bx bx-network-chart'></i></span>
+                        <span class="text"><h2>IA</h2></span>
+                    </a></li>
+          
+                    <li><a href="/Lens_Geld_completo/public/Teste de perfil/index.html">
+                        <span class="icon"><i class='bx bx-user-check'></i></span>
+                        <span class="text"><h2>Teste de Perfil</h2></span>
+                    </a></li>
+    
+                    <li><a href="/Lens_Geld_completo/public/Ensino/index.html">
+                        <span class="icon"><i class='bx bxs-graduation'></i></span>
+                        <span class="text"><h2>Estudos</h2></span>
+                    </a></li>
+          
+                    <li><a href="/Lens_Geld_completo/public/Graficos/index.html">
+                        <span class="icon"><i class='bx bx-line-chart'></i></span>
+                        <span class="text"><h2>Analises</h2></span>
+                    </a></li>
+    
+                    <li><a href="/Lens_Geld_completo/public/Configurações/index.html">
+                        <span class="icon"><i class='bx bx-cog'></i></span>
+                        <span class="text"><h2>Configurações</h2></span>
+                    </a></li>
+                </ul>
+            </div>
+                 <!-- TOP NAVBAR -->
+        <div class="content">
+            <div class="top-navbar">
+                <span class="menu-icon" id="menu-icon"><i class='bx bx-menu'></i></span>
+                <div class="title-container">
+                    <h1 id="LG">lENS gELD</h1>
+                </div>
+
+                <!-- PERFIL -->
+                <div>
+                    <button class="btn-menu"></button>
+                    <nav class="menu">
+                        <a class="btn-closed"><i class='bx bx-chevron-up'></i></a>
+                        <ul>
+                            <div class="edit"><li><span class="profileicon"><i class='bx bxs-user'></i></span><a href="/Lens_Geld_completo/public/Página_de_usuário/index.html">Editar Perfil</a></li></div>
+                            <div class="conf"><li><span class="profileicon"><i class='bx bxs-cog'></i></span><a href="/Lens_Geld_completo/public/Configurações/index.html">Configurações da Conta</a></li></div>
+                            <div class="out"><li><span class="profileicon"><i class='bx bx-log-out'></i></span><a href="/Lens_Geld_completo/public/Login/index.html">Sair</a></li></div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            
+            <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
+
+
+            <div class="container">
+                <h2>Teste de Perfil de Investidor</h2>
+        
+                <!-- Barra de Progresso -->
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+        
+                <form id="perfil-form">
+                    <!-- Perguntas -->
+                    <div class="question-container">
+                
+                        <div class="question" data-index="1">
+                            <label>1. Qual sua familiaridade com o mercado de investimentos?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q1" value="1" class="option-input">
+                                    <span class="option-label">Nenhuma</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q1" value="2" class="option-input">
+                                    <span class="option-label">Tenho um conhecimento básico</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q1" value="3" class="option-input">
+                                    <span class="option-label">Tenho experiência significativa</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="2">
+                            <label>2. Qual é a sua principal motivação para investir?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q2" value="1" class="option-input">
+                                    <span class="option-label">Proteger meu dinheiro contra a inflação</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q2" value="2" class="option-input">
+                                    <span class="option-label">Crescer meu patrimônio ao longo do tempo</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q2" value="3" class="option-input">
+                                    <span class="option-label">Obter altos retornos em curto prazo</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question" data-index="3">
+                            <label>3. Qual é o valor médio que você pretende investir regularmente?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q3" value="1" class="option-input">
+                                    <span class="option-label">Menos de R$ 500 por mês</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q3" value="2" class="option-input">
+                                    <span class="option-label">Entre R$ 500 e R$ 5.000 por mês</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q3" value="3" class="option-input">
+                                    <span class="option-label">Mais de R$ 5.000 por mês</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                
+                        <div class="question" data-index="4">
+                            <label>4. Por quanto tempo você pretende manter seus investimentos?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q4" value="1" class="option-input">
+                                    <span class="option-label">Menos de 1 ano</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q4" value="2" class="option-input">
+                                    <span class="option-label">1 a 3 anos</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q4" value="3" class="option-input">
+                                    <span class="option-label">Mais de 3 anos</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="5">
+                            <label>5. Você possui um fundo de emergência (valor guardado para imprevistos)?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q5" value="1" class="option-input">
+                                    <span class="option-label">Não tenho</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q5" value="2" class="option-input">
+                                    <span class="option-label">Tenho, mas é pequeno</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q5" value="3" class="option-input">
+                                    <span class="option-label">Sim, é suficiente</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="6">
+                            <label>6. Com qual das opções você mais se identifica?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q6" value="1" class="option-input">
+                                    <span class="option-label">Prefiro segurança e menos riscos</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q6" value="2" class="option-input">
+                                    <span class="option-label">Aceito algum risco por retornos moderados</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q6" value="3" class="option-input">
+                                    <span class="option-label">Busco alta rentabilidade, aceito mais riscos</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="7">
+                            <label>7. Quanto você já conhece sobre diferentes tipos de investimento (ex: ações, fundos, tesouro)?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q7" value="1" class="option-input">
+                                    <span class="option-label">Não conheço nada</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q7" value="2" class="option-input">
+                                    <span class="option-label">Tenho uma noção básica</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q7" value="3" class="option-input">
+                                    <span class="option-label">Conheço bem e acompanho o mercado</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="8">
+                            <label>8. Você já investiu antes?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q8" value="1" class="option-input">
+                                    <span class="option-label">Nunca investi</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q8" value="2" class="option-input">
+                                    <span class="option-label">Já fiz algum investimento básico (ex: poupança)</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q8" value="3" class="option-input">
+                                    <span class="option-label">Sim, em produtos mais complexos</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                        <div class="question" data-index="9">
+                            <label>9. Quanto de risco você está disposto a assumir para aumentar seus retornos?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q9" value="1" class="option-input">
+                                    <span class="option-label">Pouco risco</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q9" value="2" class="option-input">
+                                    <span class="option-label">Risco moderado</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q9" value="3" class="option-input">
+                                    <span class="option-label">Alto risco</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question" data-index="10">
+                            <label>10. Qual sua expectativa de retorno sobre os investimentos?</label>
+                            <div class="options">
+                                <label class="option-container">
+                                    <input type="radio" name="q10" value="1" class="option-input">
+                                    <span class="option-label">Baixa, apenas o suficiente para proteger o dinheiro</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q10" value="2" class="option-input">
+                                    <span class="option-label">Média, quero que ele cresça ao longo do tempo</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option-container">
+                                    <input type="radio" name="q10" value="3" class="option-input">
+                                    <span class="option-label">Alta, busco um crescimento significativo</span>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                
+                    </div>
+                </form>
+                
+                <div class="form-container">
+                    <form id="perfil-form">
+                        <!-- Botão centralizado -->
+                        <button type="submit" form="perfil-form">Calcular Perfil</button>
+                
+                        <!-- Botões de navegação -->
+                        <div class="navigation-buttons">
+                            <button type="button" id="prev-btn" class="nav-btn" disabled>Anterior</button>
+                            <button type="button" id="next-btn" class="nav-btn">Próxima</button>
+                        </div>
+                    </form>
+                </div>
+                
+
+        <!-- Modal de Resultado -->
+        <div class="modal" id="resultModal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Seu perfil de investidor: <span id="perfil"></span></h3>
+                <div class="investments">
+                    <h4>Recomendações de investimentos:</h4>
+                    <ul id="recomendacoes"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Rodapé -->
+     <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Lens Geld | Desenvolvido por Sky Fenix</p>
+            <nav class="footer-links">
+                <a href="link_do_site_da_empresa">Site da Empresa</a>
+                <a href="https://www.instagram.com/skyfenix862/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+                <a href="mailto:contato@suaempresa.com">Contate-nos</a>
+                <a href="/Lens_Geld_completo/public/Termos de uso/index.html">Termos de Uso</a>
+                <a href="/Lens_Geld_completo/public/politica de privacidade/index.html">Política de Privacidade</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/Lens_Geld_completo/public/Teste de perfil/Script.js"></script>
+    <script src="/Lens_Geld_completo/public/assets/theme.js"></script>
+</body>
+</html>
